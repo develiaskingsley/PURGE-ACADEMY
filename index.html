@@ -1002,39 +1002,34 @@ function basculerMenu() {
        bouton.setAttribute("aria-expanded", String(ouvert));
 }
 
-/* RENDRE LE BOUTON CLIQUABLE SUR ORDINATEUR ET MOBILE */
-document.addEventListener("DOMContentLoaded", function() {
-       const bouton = document.getElementById("boutonMenu");
-       if (bouton) {
-           bouton.addEventListener("click", function(event) {
-               event.preventDefault();
-               event.stopPropagation();
-               basculerMenu();
-           });
-       }
-});
+/* RENDRE LE BOUTON TROIS POINTS CLIQUABLE */
+const boutonMenu = document.getElementById("boutonMenu");
+const liensWhatsApp = document.getElementById("liensWhatsApp");
+const conteneurMenu = document.querySelector(".menu-whatsapp");
 
-/* FERMER LE MENU EN CLIQUANT AILLEURS */
+if (boutonMenu && liensWhatsApp && conteneurMenu) {
+    boutonMenu.addEventListener("click", function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        basculerMenu();
+    });
 
-document.addEventListener("click", function(event) {
-       const conteneur = document.querySelector(".menu-whatsapp");
-       const menu = document.getElementById("liensWhatsApp");
-       const bouton = document.getElementById("boutonMenu");
+    /* Fermer le menu si l'on clique en dehors */
+    document.addEventListener("click", function(event) {
+        if (!conteneurMenu.contains(event.target)) {
+            liensWhatsApp.classList.remove("ouvert");
+            boutonMenu.setAttribute("aria-expanded", "false");
+        }
+    });
 
-       if (!conteneur.contains(event.target)) {
-           menu.classList.remove("ouvert");
-           bouton.setAttribute("aria-expanded", "false");
-       }
-});
-
-/* FERMER LE MENU AVEC ÉCHAP */
-
-document.addEventListener("keydown", function(event) {
-       if (event.key === "Escape") {
-           document.getElementById("liensWhatsApp").classList.remove("ouvert");
-           document.getElementById("boutonMenu").setAttribute("aria-expanded", "false");
-       }
-});
+    /* Fermer le menu avec la touche Échap */
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape") {
+            liensWhatsApp.classList.remove("ouvert");
+            boutonMenu.setAttribute("aria-expanded", "false");
+        }
+    });
+}
 </script>
 
 </body>
