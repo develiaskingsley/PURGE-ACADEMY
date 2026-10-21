@@ -40,13 +40,21 @@ button:hover {
 }
 
 .page {
-       display: none;
-       min-height: 100vh;
-       padding: 35px 15px;
-       position: relative;
-       isolation: isolate;
-       background-size: cover;
-       background-position: center;
+    display: none;
+    min-height: 100vh;
+    padding: 35px 15px;
+    position: relative;
+    isolation: isolate;
+    background-size: cover;
+    background-position: center;
+}
+
+.page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: rgba(0, 0, 0, 0.70);
 }
 
 .page::before {
