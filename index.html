@@ -2,954 +2,478 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PURGE ACADEMY</title>
-
 <style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  color: white;
-  background: #050505;
-}
-
-button {
-  display: block;
-  width: 100%;
-  max-width: 480px;
-  margin: 14px auto;
-  padding: 15px 12px;
-  color: white;
-  background: rgba(15, 15, 15, 0.92);
-  border: 1px solid #777;
-  border-radius: 8px;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #333;
-}
-
-input, textarea {
-  font: inherit;
-}
-
-.page {
-  display: none;
-  min-height: 100vh;
-  padding: 35px 15px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-#accueil {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background-image: url("https://i.postimg.cc/7PTb6rvV/Whats-App-Image-2026-10-21-at-21-24-12.jpg");
-}
-
-.accueil-contenu {
-  width: 100%;
-  max-width: 650px;
-}
-
-.accueil-contenu h1 {
-  font-size: clamp(30px, 7vw, 50px);
-}
-
-.sous-titre {
-  color: #ddd;
-  font-size: 18px;
-}
-
-.contenu {
-  max-width: 720px;
-  margin: auto;
-  padding: 24px;
-  background: rgba(0, 0, 0, 0.85);
-  border: 1px solid #555;
-  border-radius: 12px;
-}
-
-h2 {
-  text-align: center;
-}
-
-.description {
-  color: #ddd;
-  line-height: 1.8;
-  text-align: center;
-}
-
-.lecon {
-  padding: 20px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.08);
-  line-height: 1.9;
-  overflow-wrap: anywhere;
-}
-
-.signature {
-  margin-top: 30px;
-  text-align: center;
-  font-weight: bold;
-}
-
-.retour {
-  background: #333;
-  margin-top: 25px;
-}
-
-/* RECHERCHE DES MEMBRES */
-.recherche-membres {
-  margin: 20px 0;
-  padding: 16px;
-  background: rgba(20, 20, 20, 0.95);
-  border: 1px solid #555;
-  border-radius: 12px;
-}
-
-.recherche-membres h3 {
-  margin-top: 0;
-}
-
-.recherche-ligne {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.recherche-ligne input {
-  min-width: 0;
-  flex: 1;
-  padding: 12px;
-  color: white;
-  background: #222;
-  border: 1px solid #666;
-  border-radius: 8px;
-}
-
-.recherche-ligne button {
-  width: auto;
-  margin: 0;
-  padding: 12px;
-}
-
-.resultat-membre {
-  padding: 12px;
-  margin-top: 10px;
-  background: #242424;
-  border: 1px solid #444;
-  border-radius: 8px;
-  overflow-wrap: anywhere;
-}
-
-#communaute input,
-#communaute textarea {
-  display: block;
-  width: 100%;
-  margin: 12px 0;
-  padding: 14px;
-  color: white;
-  background: #111;
-  border: 1px solid #555;
-  border-radius: 8px;
-}
-
-#communaute [hidden] {
-  display: none !important;
-}
-
-#listeMessages {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin: 18px 0;
-  max-height: 400px;
-  overflow-y: auto;
-  overflow-wrap: anywhere;
-}
-
-.message-membre {
-  padding: 12px;
-  background: #202020;
-  border: 1px solid #444;
-  border-radius: 10px;
-}
-
-.message-membre p {
-  white-space: pre-wrap;
-}
-
-.message-membre small {
-  color: #bbb;
-}
-
-.etat {
-  min-height: 1.5em;
-  color: #ddd;
-}
-
-/* MENU */
-.menu-whatsapp {
-  position: fixed;
-  top: 15px;
-  left: 15px;
-  z-index: 9999;
-}
-
-.bouton-menu {
-  width: 46px;
-  height: 46px;
-  margin: 0;
-  padding: 0;
-  border-radius: 50%;
-  font-size: 26px;
-}
-
-.liens-whatsapp {
-  display: none;
-  position: absolute;
-  top: 55px;
-  left: 0;
-  width: 250px;
-  padding: 10px;
-  background: #111;
-  border: 1px solid #555;
-  border-radius: 12px;
-}
-
-.liens-whatsapp.ouvert {
-  display: block;
-}
-
-.liens-whatsapp a {
-  display: block;
-  padding: 12px;
-  margin: 4px 0;
-  color: white;
-  text-decoration: none;
-  background: #222;
-  border-radius: 7px;
-}
-
-@media (max-width: 600px) {
-  .contenu {
-    padding: 18px;
-  }
-
-  .page {
-    padding: 22px 12px;
-  }
-
-  .recherche-ligne {
-    flex-wrap: wrap;
-  }
-
-  .recherche-ligne input {
-    flex-basis: 100%;
-  }
-
-  .recherche-ligne button {
-    width: 100%;
-  }
-}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;color:white;background:#050505}
+button{display:block;width:100%;max-width:480px;margin:14px auto;padding:15px 12px;color:white;background:#151515;border:1px solid #777;border-radius:8px;font-size:15px;font-weight:bold;cursor:pointer}
+button:hover{background:#333}
+button:disabled{opacity:.5;cursor:wait}
+input,textarea{font:inherit}
+.page{display:none;min-height:100vh;padding:35px 15px;background-size:cover;background-position:center;background-repeat:no-repeat}
+#accueil{display:flex;justify-content:center;align-items:center;text-align:center;background-image:url("https://i.postimg.cc/7PTb6rvV/Whats-App-Image-2026-10-21-at-21-24-12.jpg")}
+.accueil-contenu{width:100%;max-width:650px}
+.accueil-contenu h1{font-size:clamp(30px,7vw,50px)}
+.sous-titre{color:#ddd;font-size:18px}
+.contenu{max-width:720px;margin:auto;padding:24px;background:rgba(0,0,0,.88);border:1px solid #555;border-radius:12px}
+h2{text-align:center}
+.description{color:#ddd;line-height:1.8;text-align:center}
+.lecon{padding:20px;border-radius:8px;background:#181818;line-height:1.9;overflow-wrap:anywhere}
+.signature{margin-top:30px;text-align:center;font-weight:bold}
+.retour{background:#333;margin-top:25px}
+.menu-whatsapp{position:fixed;top:15px;left:15px;z-index:9999}
+.bouton-menu{width:46px;height:46px;margin:0;padding:0;border-radius:50%;font-size:26px}
+.liens-whatsapp{display:none;position:absolute;top:55px;left:0;width:250px;padding:10px;background:#111;border:1px solid #555;border-radius:12px}
+.liens-whatsapp.ouvert{display:block}
+.liens-whatsapp a{display:block;padding:12px;margin:4px 0;color:white;text-decoration:none;background:#222;border-radius:7px}
+.recherche-membres{margin:20px 0;padding:16px;background:#141414;border:1px solid #555;border-radius:12px}
+.recherche-ligne{display:flex;gap:8px;align-items:center}
+.recherche-ligne input{min-width:0;flex:1}
+input,textarea{display:block;width:100%;margin:12px 0;padding:14px;color:white;background:#111;border:1px solid #555;border-radius:8px}
+#communaute [hidden]{display:none!important}
+#listeMessages{display:flex;flex-direction:column;gap:12px;margin:18px 0;max-height:400px;overflow-y:auto;overflow-wrap:anywhere}
+.message-membre,.resultat-membre{padding:12px;background:#202020;border:1px solid #444;border-radius:10px;overflow-wrap:anywhere}
+.message-membre p{white-space:pre-wrap}
+.message-membre small{color:#bbb}
+.etat{min-height:1.5em;color:#ddd;overflow-wrap:anywhere}
+@media(max-width:600px){.contenu{padding:18px}.page{padding:22px 12px}.recherche-ligne{flex-wrap:wrap}.recherche-ligne button{width:100%}}
 </style>
 </head>
-
 <body>
 
-<!-- MENU -->
 <div class="menu-whatsapp">
-  <button type="button" class="bouton-menu" id="boutonMenu">⋮</button>
-  <div class="liens-whatsapp" id="liensWhatsApp">
-    <a href="https://whatsapp.com/channel/0029Vb8gL4oCnA80vErXTe37"
-       target="_blank" rel="noopener noreferrer">📢 Ma chaîne WhatsApp</a>
-    <a href="https://chat.whatsapp.com/CB1JtzF7qkFDblv6Kc6Mfa"
-       target="_blank" rel="noopener noreferrer">👥 Mon groupe WhatsApp</a>
-    <a href="https://chat.whatsapp.com/KRsDZCveEtyBOEQ2T4fRYM"
-       target="_blank" rel="noopener noreferrer">💬 Me contacter</a>
-  </div>
+<button type="button" class="bouton-menu" id="boutonMenu" aria-label="Ouvrir le menu">⋮</button>
+<div class="liens-whatsapp" id="liensWhatsApp">
+<a href="https://whatsapp.com/channel/0029Vb8gL4oCnA80vErXTe37" target="_blank" rel="noopener noreferrer">📢 Ma chaîne WhatsApp</a>
+<a href="https://chat.whatsapp.com/CB1JtzF7qkFDblv6Kc6Mfa" target="_blank" rel="noopener noreferrer">👥 Mon groupe WhatsApp</a>
+<a href="https://chat.whatsapp.com/KRsDZCveEtyBOEQ2T4fRYM" target="_blank" rel="noopener noreferrer">💬 Me contacter</a>
+</div>
 </div>
 
-<!-- ACCUEIL -->
 <section class="page" id="accueil">
-  <div class="accueil-contenu">
-    <h1>⚔️ PURGE ACADEMY</h1>
-    <p class="sous-titre">Bienvenue dans ton académie</p>
-    <button onclick="ouvrirCommunaute()">👤 CRÉER MON COMPTE</button>
-    <button onclick="afficherPage('choixCours')">📚 SUIVRE LE COURS</button>
-    <p class="signature">DEV ELIAS D KINGSLEY 🫴🏾✨🕯️</p>
-  </div>
+<div class="accueil-contenu">
+<h1>⚔️ PURGE ACADEMY</h1>
+<p class="sous-titre">Bienvenue dans ton académie</p>
+<button onclick="ouvrirCommunaute()">👤 CRÉER MON COMPTE</button>
+<button onclick="afficherPage('choixCours')">📚 SUIVRE LE COURS</button>
+<p class="signature">DEV ELIAS D KINGSLEY 🫴🏾✨🕯️</p>
+</div>
 </section>
 
-<!-- MENU DES COURS -->
 <section class="page" id="choixCours">
-  <div class="contenu">
-    <h2>📚 SUIVRE LE COURS PURGE ACADEMY</h2>
-    <p class="description">Choisis le niveau que tu veux étudier.</p>
-    <button onclick="ouvrirNiveau(1)">NIVEAU 01 — INITIATION</button>
-    <button onclick="ouvrirNiveau(2)">NIVEAU 02 — OBSERVATION</button>
-    <button onclick="ouvrirNiveau(3)">NIVEAU 03 — STRATÉGIE</button>
-    <button onclick="ouvrirNiveau(4)">NIVEAU 04 — DÉFENSE</button>
-    <button onclick="ouvrirNiveau(5)">NIVEAU 05 — ÉPREUVE FINALE</button>
-    <button class="retour" onclick="accueil()">← RETOUR À L'ACCUEIL</button>
-  </div>
+<div class="contenu">
+<h2>📚 SUIVRE LE COURS PURGE ACADEMY</h2>
+<p class="description">Choisis le niveau que tu veux étudier.</p>
+<button onclick="ouvrirNiveau(1)">NIVEAU 01 — INITIATION</button>
+<button onclick="ouvrirNiveau(2)">NIVEAU 02 — OBSERVATION</button>
+<button onclick="ouvrirNiveau(3)">NIVEAU 03 — STRATÉGIE</button>
+<button onclick="ouvrirNiveau(4)">NIVEAU 04 — DÉFENSE</button>
+<button onclick="ouvrirNiveau(5)">NIVEAU 05 — ÉPREUVE FINALE</button>
+<button class="retour" onclick="accueil()">← RETOUR À L'ACCUEIL</button>
+</div>
 </section>
 
-<!-- NIVEAU 1 -->
-<section class="page" id="niveau1">
-  <div class="contenu">
-    <h2>NIVEAU 01 — INITIATION</h2>
-    <p class="description">Bienvenue dans le premier niveau. Découvre l'univers fictif de PURGE ACADEMY et apprends les règles fondamentales.</p>
-    <button onclick="ouvrirCours('cours11')">PARTIE 01 — DÉCOUVRIR L'UNIVERS</button>
-    <button onclick="ouvrirCours('cours12')">PARTIE 02 — LES RÈGLES GÉNÉRALES</button>
-    <button class="retour" onclick="afficherPage('choixCours')">← RETOUR AUX NIVEAUX</button>
-  </div>
-</section>
+<section class="page" id="niveau1"><div class="contenu">
+<h2>NIVEAU 01 — INITIATION</h2>
+<p class="description">Découvre l'univers fictif de PURGE ACADEMY et ses règles fondamentales.</p>
+<button onclick="ouvrirCours('cours11')">PARTIE 01 — DÉCOUVRIR L'UNIVERS</button>
+<button onclick="ouvrirCours('cours12')">PARTIE 02 — LES RÈGLES GÉNÉRALES</button>
+<button class="retour" onclick="afficherPage('choixCours')">← RETOUR AUX NIVEAUX</button>
+</div></section>
 
-<!-- NIVEAU 2 -->
-<section class="page" id="niveau2">
-  <div class="contenu">
-    <h2>NIVEAU 02 — OBSERVATION</h2>
-    <p class="description">Apprends à observer et à examiner une situation fictive.</p>
-    <button onclick="ouvrirCours('cours21')">PARTIE 01 — OBSERVER UN SCÉNARIO</button>
-    <button onclick="ouvrirCours('cours22')">PARTIE 02 — ANALYSER UNE SITUATION</button>
-    <button class="retour" onclick="afficherPage('choixCours')">← RETOUR AUX NIVEAUX</button>
-  </div>
-</section>
+<section class="page" id="niveau2"><div class="contenu">
+<h2>NIVEAU 02 — OBSERVATION</h2>
+<p class="description">Apprends à observer et à examiner une situation fictive.</p>
+<button onclick="ouvrirCours('cours21')">PARTIE 01 — OBSERVER UN SCÉNARIO</button>
+<button onclick="ouvrirCours('cours22')">PARTIE 02 — ANALYSER UNE SITUATION</button>
+<button class="retour" onclick="afficherPage('choixCours')">← RETOUR AUX NIVEAUX</button>
+</div></section>
 
-<!-- NIVEAU 3 -->
-<section class="page" id="niveau3">
-  <div class="contenu">
-    <h2>NIVEAU 03 — STRATÉGIE</h2>
-    <p class="description">Développe ton raisonnement et apprends à évaluer les conséquences de tes choix.</p>
-    <button onclick="ouvrirCours('cours31')">PARTIE 01 — COMPRENDRE LA STRATÉGIE</button>
-    <button onclick="ouvrirCours('cours32')">PARTIE 02 — RÉSOUDRE UN SCÉNARIO</button>
-    <button class="retour" onclick="afficherPage('choixCours')">← RETOUR AUX NIVEAUX</button>
-  </div>
-</section>
+<section class="page" id="niveau3"><div class="contenu">
+<h2>NIVEAU 03 — STRATÉGIE</h2>
+<p class="description">Développe ton raisonnement et évalue les conséquences de tes choix.</p>
+<button onclick="ouvrirCours('cours31')">PARTIE 01 — COMPRENDRE LA STRATÉGIE</button>
+<button onclick="ouvrirCours('cours32')">PARTIE 02 — RÉSOUDRE UN SCÉNARIO</button>
+<button class="retour" onclick="afficherPage('choixCours')">← RETOUR AUX NIVEAUX</button>
+</div></section>
 
-<!-- NIVEAU 4 -->
-<section class="page" id="niveau4">
-  <div class="contenu">
-    <h2>NIVEAU 04 — DÉFENSE</h2>
-    <p class="description">Apprends à reconnaître les risques et à privilégier la sécurité.</p>
-    <button onclick="ouvrirCours('cours41')">PARTIE 01 — RECONNAÎTRE LES RISQUES</button>
-    <button onclick="ouvrirCours('cours42')">PARTIE 02 — PRÉVENTION ET SÉCURITÉ</button>
-    <button class="retour" onclick="afficherPage('choixCours')">← RETOUR AUX NIVEAUX</button>
-  </div>
-</section>
+<section class="page" id="niveau4"><div class="contenu">
+<h2>NIVEAU 04 — DÉFENSE</h2>
+<p class="description">Apprends à reconnaître les risques et à privilégier la sécurité.</p>
+<button onclick="ouvrirCours('cours41')">PARTIE 01 — RECONNAÎTRE LES RISQUES</button>
+<button onclick="ouvrirCours('cours42')">PARTIE 02 — PRÉVENTION ET SÉCURITÉ</button>
+<button class="retour" onclick="afficherPage('choixCours')">← RETOUR AUX NIVEAUX</button>
+</div></section>
 
-<!-- NIVEAU 5 -->
-<section class="page" id="niveau5">
-  <div class="contenu">
-    <h2>NIVEAU 05 — ÉPREUVE FINALE</h2>
-    <p class="description">Dernière étape de la formation.</p>
-    <button onclick="ouvrirCours('cours51')">PARTIE 01 — RÉVISION GÉNÉRALE</button>
-    <button onclick="ouvrirCours('cours52')">PARTIE 02 — ÉVALUATION FINALE</button>
-    <button class="retour" onclick="afficherPage('choixCours')">← RETOUR AUX NIVEAUX</button>
-  </div>
-</section>
+<section class="page" id="niveau5"><div class="contenu">
+<h2>NIVEAU 05 — ÉPREUVE FINALE</h2>
+<p class="description">Dernière étape de la formation.</p>
+<button onclick="ouvrirCours('cours51')">PARTIE 01 — RÉVISION GÉNÉRALE</button>
+<button onclick="ouvrirCours('cours52')">PARTIE 02 — ÉVALUATION FINALE</button>
+<button class="retour" onclick="afficherPage('choixCours')">← RETOUR AUX NIVEAUX</button>
+</div></section>
 
-<!-- COURS 1.1 -->
-<section class="page" id="cours11">
-  <div class="contenu">
-    <h2>PARTIE 01 — DÉCOUVRIR L'UNIVERS</h2>
-    <div class="lecon">
-      <h3>Bienvenue à PURGE ACADEMY</h3>
-      <p>PURGE ACADEMY est un site consacré à la découverte de l'univers de la purge virtuelle, à la compréhension des bannissements et aux moyens de se protéger contre les abus.</p>
-      <p>PURGE ACADEMY a été créée le 00/10/2026 par le dev ELIAS D KINGSLEY 🫴🏾✨🕯️.</p>
-      <p>Sur ce, allez-y, apprenez et bonne lecture à tous 🫴🏾✨🕯️.</p>
-      <p><strong>Objectif :</strong> présentation.</p>
-    </div>
-    <button class="retour" onclick="retourNiveau(1)">← RETOUR AU NIVEAU 1</button>
-  </div>
-</section>
+<section class="page" id="cours11"><div class="contenu">
+<h2>PARTIE 01 — DÉCOUVRIR L'UNIVERS</h2><div class="lecon">
+<h3>Bienvenue à PURGE ACADEMY</h3>
+<p>PURGE ACADEMY présente un univers virtuel consacré à la compréhension des bannissements, aux communautés et aux moyens de se protéger contre les abus.</p>
+<p>PURGE ACADEMY a été créée par le dev ELIAS D KINGSLEY 🫴🏾✨🕯️.</p>
+<p>Apprenez et bonne lecture à tous !</p>
+</div><button class="retour" onclick="retourNiveau(1)">← RETOUR AU NIVEAU 1</button>
+</div></section>
 
-<!-- COURS 1.2 -->
-<section class="page" id="cours12">
-  <div class="contenu">
-    <h2>PARTIE 02 — LES RÈGLES GÉNÉRALES</h2>
-    <div class="lecon">
-      <h3>Les règles de l'académie</h3>
-      <p>La purge est un univers virtuel notamment basé sur la suppression de membres d'un groupe ou d'une communauté par des personnes disposant du rôle d'administrateur. Au fil du temps, cet univers a évolué avec l'apparition de bugs, de bots et de nouvelles situations.</p>
-      <p><strong>Objectif :</strong> définition de la purge.</p>
-    </div>
-    <button class="retour" onclick="retourNiveau(1)">← RETOUR AU NIVEAU 1</button>
-  </div>
-</section>
+<section class="page" id="cours12"><div class="contenu">
+<h2>PARTIE 02 — LES RÈGLES GÉNÉRALES</h2><div class="lecon">
+<h3>Les règles de l'académie</h3>
+<p>Dans cet univers virtuel, la purge désigne notamment la suppression ou l'exclusion de membres d'un groupe par des administrateurs. Des bugs, des bots et des conflits peuvent également survenir.</p>
+<p><strong>Objectif :</strong> comprendre les règles et respecter les autres membres.</p>
+</div><button class="retour" onclick="retourNiveau(1)">← RETOUR AU NIVEAU 1</button>
+</div></section>
 
-<!-- COURS 2.1 -->
-<section class="page" id="cours21">
-  <div class="contenu">
-    <h2>PARTIE 01 — OBSERVER UN SCÉNARIO</h2>
-    <div class="lecon">
-      <h3>LA DÉFINITION AU COMPLET</h3>
-      <p>Comme je l'ai expliqué, la purge est un univers virtuel notamment basé sur la suppression de membres d'un groupe ou d'une communauté par des personnes disposant du rôle d'administrateur.</p>
-      <p>Avec le temps, cet univers a évolué avec des bugs, des bots, des méthodes de bannissement et des conflits entre clans.</p>
-      <p>Imagine une guerre virtuelle basée sur les bannissements de comptes WhatsApp et les problèmes techniques qui peuvent perturber l'utilisation de WhatsApp et de Meta.</p>
-    </div>
-    <button class="retour" onclick="retourNiveau(2)">← RETOUR AU NIVEAU 2</button>
-  </div>
-</section>
+<section class="page" id="cours21"><div class="contenu">
+<h2>PARTIE 01 — OBSERVER UN SCÉNARIO</h2><div class="lecon">
+<h3>La définition au complet</h3>
+<p>La purge est ici présentée comme un univers virtuel autour des exclusions de groupes et des actions des administrateurs.</p>
+<p>Avec le temps, cet univers peut comprendre des bugs, des bots, des bannissements et des conflits entre clans.</p>
+<p>Dans tout scénario, distingue les faits vérifiés des suppositions avant de conclure.</p>
+</div><button class="retour" onclick="retourNiveau(2)">← RETOUR AU NIVEAU 2</button>
+</div></section>
 
-<!-- COURS 2.2 -->
-<section class="page" id="cours22">
-  <div class="contenu">
-    <h2>PARTIE 02 — ANALYSER UNE SITUATION</h2>
-    <div class="lecon">
-      <h3>Analyser avant de conclure</h3>
-      <p>Analyser consiste à comprendre un problème et à comparer plusieurs solutions possibles. Tous les conflits ne méritent pas qu'on s'y engage. Parfois, il vaut mieux garder son calme et réfléchir avant d'agir.</p>
-      <p>Être un bon stratège signifie savoir prendre les bonnes décisions au bon moment. Prends le temps d'analyser la situation avant de décider quoi faire 🫴🏾✨🕯️.</p>
-      <p>Demande-toi : quelles informations sont certaines ? Quelles sont les options disponibles ? Quelles pourraient être leurs conséquences ?</p>
-    </div>
-    <button class="retour" onclick="retourNiveau(2)">← RETOUR AU NIVEAU 2</button>
-  </div>
-</section>
+<section class="page" id="cours22"><div class="contenu">
+<h2>PARTIE 02 — ANALYSER UNE SITUATION</h2><div class="lecon">
+<h3>Analyser avant de conclure</h3>
+<p>Analyser consiste à comprendre un problème et à comparer plusieurs solutions possibles. Tous les conflits ne méritent pas qu'on s'y engage.</p>
+<p>Un bon stratège prend le temps de réfléchir avant d'agir.</p>
+<p>Demande-toi : quelles informations sont certaines ? Quelles options existent ? Quelles sont leurs conséquences ?</p>
+</div><button class="retour" onclick="retourNiveau(2)">← RETOUR AU NIVEAU 2</button>
+</div></section>
 
-<!-- COURS 3.1 -->
-<section class="page" id="cours31">
-  <div class="contenu">
-    <h2>COMMENT SE DÉFENDRE DEVANT UNE SITUATION</h2>
-    <div class="lecon">
-      <h3>Organiser ses idées</h3>
-      <p>DEVANT LES ATTAQUES, GARDE TON CALME, DOCUMENTE CE QUI SE PASSE ET UTILISE LES OUTILS DE SIGNALEMENT APPROPRIÉS. ÉVITE LE SPAM ET LES ACTIONS QUI POURRAIENT METTRE D'AUTRES COMPTES EN DANGER. 🫴🏾✨🕯️</p>
-      <p>N'OUBLIE PAS : CHAQUE DÉCISION DOIT ÊTRE ACCOMPAGNÉE D'UNE STRATÉGIE. NE TE LANCE PAS À L'AVEUGLE !</p>
-    </div>
-    <button class="retour" onclick="retourNiveau(3)">← RETOUR AU NIVEAU 3</button>
-  </div>
-</section>
+<section class="page" id="cours31"><div class="contenu">
+<h2>PARTIE 01 — COMPRENDRE LA STRATÉGIE</h2><div class="lecon">
+<h3>Organiser ses idées</h3>
+<p>Devant un conflit virtuel, garde ton calme, conserve les preuves utiles et utilise les outils de signalement appropriés.</p>
+<p>Évite le spam et les actions qui pourraient mettre d'autres comptes en danger. Ne te lance pas à l'aveugle.</p>
+</div><button class="retour" onclick="retourNiveau(3)">← RETOUR AU NIVEAU 3</button>
+</div></section>
 
-<!-- COURS 3.2 -->
-<section class="page" id="cours32">
-  <div class="contenu">
-    <h2>PARTIE 02 — RÉSOUDRE UN SCÉNARIO</h2>
-    <div class="lecon">
-      <h3>Trouver une solution</h3>
-      <p>Pour résoudre un problème, commence par le définir. Ensuite, imagine plusieurs solutions et compare leurs avantages et leurs inconvénients.</p>
-      <p>Une décision réfléchie tient compte des personnes concernées et des conséquences possibles.</p>
-      <p><strong>Exercice :</strong> un groupe n'arrive pas à choisir un projet. Propose une méthode juste pour que chacun puisse donner son avis.</p>
-    </div>
-    <button class="retour" onclick="retourNiveau(3)">← RETOUR AU NIVEAU 3</button>
-  </div>
-</section>
+<section class="page" id="cours32"><div class="contenu">
+<h2>PARTIE 02 — RÉSOUDRE UN SCÉNARIO</h2><div class="lecon">
+<h3>Trouver une solution</h3>
+<p>Pour résoudre un problème, commence par le définir. Imagine plusieurs solutions et compare leurs avantages et inconvénients.</p>
+<p>Une décision réfléchie tient compte des personnes concernées et des conséquences possibles.</p>
+<p><strong>Exercice :</strong> un groupe n'arrive pas à choisir un projet. Propose une méthode juste où chacun peut donner son avis.</p>
+</div><button class="retour" onclick="retourNiveau(3)">← RETOUR AU NIVEAU 3</button>
+</div></section>
 
-<!-- COURS 4.1 -->
-<section class="page" id="cours41">
-  <div class="contenu">
-    <h2>PARTIE 01 — RECONNAÎTRE LES RISQUES</h2>
-    <div class="lecon">
-      <h3>Identifier les dangers</h3>
-      <p>Reconnaître un risque permet de prendre des précautions avant qu'une situation ne devienne dangereuse.</p>
-      <p>Observe ton environnement, respecte les consignes de sécurité et demande conseil en cas de doute.</p>
-      <p><strong>Exercice :</strong> dans un scénario fictif, identifie deux risques et propose une précaution adaptée à chacun.</p>
-    </div>
-    <button class="retour" onclick="retourNiveau(4)">← RETOUR AU NIVEAU 4</button>
-  </div>
-</section>
+<section class="page" id="cours41"><div class="contenu">
+<h2>PARTIE 01 — RECONNAÎTRE LES RISQUES</h2><div class="lecon">
+<h3>Identifier les dangers</h3>
+<p>Reconnaître un risque permet de prendre des précautions avant qu'une situation ne devienne dangereuse.</p>
+<p>Observe ton environnement, respecte les consignes de sécurité et demande conseil en cas de doute.</p>
+<p><strong>Exercice :</strong> identifie deux risques dans un scénario fictif et propose une précaution pour chacun.</p>
+</div><button class="retour" onclick="retourNiveau(4)">← RETOUR AU NIVEAU 4</button>
+</div></section>
 
-<!-- COURS 4.2 -->
-<section class="page" id="cours42">
-  <div class="contenu">
-    <h2>PARTIE 02 — PRÉVENTION ET SÉCURITÉ</h2>
-    <div class="lecon">
-      <h3>La sécurité avant tout</h3>
-      <p>La prévention consiste à réduire les risques et à éviter que les problèmes ne s'aggravent.</p>
-      <p>En cas de conflit, évite la confrontation, éloigne-toi si nécessaire et cherche de l'aide si une personne est en danger.</p>
-      <p><strong>Exercice :</strong> imagine un désaccord qui devient tendu. Propose trois étapes pour demander de l'aide et retrouver le calme.</p>
-    </div>
-    <button class="retour" onclick="retourNiveau(4)">← RETOUR AU NIVEAU 4</button>
-  </div>
-</section>
+<section class="page" id="cours42"><div class="contenu">
+<h2>PARTIE 02 — PRÉVENTION ET SÉCURITÉ</h2><div class="lecon">
+<h3>La sécurité avant tout</h3>
+<p>La prévention consiste à réduire les risques et à éviter que les problèmes ne s'aggravent.</p>
+<p>En cas de conflit, évite la confrontation, éloigne-toi si nécessaire et cherche de l'aide si une personne est en danger.</p>
+<p><strong>Exercice :</strong> propose trois étapes pour calmer un désaccord et demander de l'aide.</p>
+</div><button class="retour" onclick="retourNiveau(4)">← RETOUR AU NIVEAU 4</button>
+</div></section>
 
-<!-- COURS 5.1 -->
-<section class="page" id="cours51">
-  <div class="contenu">
-    <h2>PARTIE 01 — RÉVISION GÉNÉRALE</h2>
-    <div class="lecon">
-      <h3>Révise ton parcours</h3>
-      <p>Tu as parcouru les thèmes de l'initiation, de l'observation, de la stratégie, de la prévention et de la sécurité.</p>
-      <p>Vérifie que tu sais distinguer les faits des suppositions, comparer plusieurs solutions et réfléchir aux conséquences de tes décisions.</p>
-      <p><strong>Exercice :</strong> résume les quatre premiers niveaux en quelques phrases. Donne un exemple fictif pour chaque thème.</p>
-    </div>
-    <button class="retour" onclick="retourNiveau(5)">← RETOUR AU NIVEAU 5</button>
-  </div>
-</section>
+<section class="page" id="cours51"><div class="contenu">
+<h2>PARTIE 01 — RÉVISION GÉNÉRALE</h2><div class="lecon">
+<h3>Révise ton parcours</h3>
+<p>Révise l'initiation, l'observation, la stratégie, la prévention et la sécurité.</p>
+<p>Vérifie que tu sais distinguer les faits des suppositions et comparer plusieurs solutions.</p>
+<p><strong>Exercice :</strong> résume les quatre premiers niveaux en donnant un exemple fictif pour chaque thème.</p>
+</div><button class="retour" onclick="retourNiveau(5)">← RETOUR AU NIVEAU 5</button>
+</div></section>
 
-<!-- COURS 5.2 -->
-<section class="page" id="cours52">
-  <div class="contenu">
-    <h2>PARTIE 02 — ÉVALUATION FINALE</h2>
-    <div class="lecon">
-      <h3>Épreuve finale de PURGE ACADEMY</h3>
-      <p>Bienvenue dans la dernière partie de ta formation. Réponds aux questions dans ton cahier.</p>
-      <p><strong>Question 1 :</strong> pourquoi faut-il observer avant de prendre une décision ?</p>
-      <p><strong>Question 2 :</strong> quelle est la différence entre un fait et une supposition ?</p>
-      <p><strong>Question 3 :</strong> comment résoudre un désaccord de façon pacifique ?</p>
-      <p><strong>Question 4 :</strong> que faut-il privilégier lorsqu'une situation devient dangereuse ?</p>
-      <p><strong>Félicitations !</strong> Tu es arrivé au terme des cinq niveaux de PURGE ACADEMY.</p>
-      <p>Continue à apprendre, à réfléchir et à respecter les autres.</p>
-      <h3 class="signature">DEV ELIAS D KINGSLEY</h3>
-    </div>
-    <button class="retour" onclick="retourNiveau(5)">← RETOUR AU NIVEAU 5</button>
-    <button onclick="accueil()">🏠 RETOUR À L'ACCUEIL</button>
-  </div>
-</section>
+<section class="page" id="cours52"><div class="contenu">
+<h2>PARTIE 02 — ÉVALUATION FINALE</h2><div class="lecon">
+<h3>Épreuve finale de PURGE ACADEMY</h3>
+<p><strong>Question 1 :</strong> pourquoi observer avant de décider ?</p>
+<p><strong>Question 2 :</strong> quelle est la différence entre un fait et une supposition ?</p>
+<p><strong>Question 3 :</strong> comment résoudre un désaccord pacifiquement ?</p>
+<p><strong>Question 4 :</strong> que privilégier lorsqu'une situation devient dangereuse ?</p>
+<p><strong>Félicitations !</strong> Tu es arrivé au terme des cinq niveaux.</p>
+<h3 class="signature">DEV ELIAS D KINGSLEY</h3>
+</div><button class="retour" onclick="retourNiveau(5)">← RETOUR AU NIVEAU 5</button>
+<button onclick="accueil()">🏠 RETOUR À L'ACCUEIL</button>
+</div></section>
 
-<!-- COMMUNAUTÉ -->
-<section class="page" id="communaute">
-  <div class="contenu">
-    <h2>💬 PURGE ACADEMY — COMMUNAUTÉ</h2>
+<section class="page" id="communaute"><div class="contenu">
+<h2>💬 PURGE ACADEMY — COMMUNAUTÉ</h2>
 
-    <div id="authZone">
-      <h3>Créer un compte</h3>
-      <form id="inscriptionForm">
-        <input id="nomInscription" type="text"
-          placeholder="Ton nom ou pseudonyme" maxlength="40" required>
-        <input id="emailInscription" type="email"
-          placeholder="Ton adresse e-mail" required>
-        <input id="mdpInscription" type="password"
-          placeholder="Mot de passe (6 caractères minimum)"
-          minlength="6" required>
-        <button type="submit">Créer mon compte</button>
-      </form>
+<div id="authZone">
+<h3>Créer un compte</h3>
+<form id="inscriptionForm">
+<input id="nomInscription" type="text" placeholder="Ton pseudonyme (4 à 30 caractères)" minlength="4" maxlength="30" required>
+<input id="emailInscription" type="email" placeholder="Ton adresse e-mail" autocomplete="email" required>
+<input id="mdpInscription" type="password" placeholder="Mot de passe (6 caractères minimum)" minlength="6" autocomplete="new-password" required>
+<button type="submit">Créer mon compte</button>
+</form>
 
-      <hr>
+<div id="verificationZone" hidden>
+<h3>📩 Vérifier ton adresse e-mail</h3>
+<p>Consulte ta boîte e-mail et saisis le code reçu.</p>
+<form id="verificationForm">
+<input id="codeVerification" type="text" inputmode="numeric" autocomplete="one-time-code" placeholder="Code de vérification" maxlength="8" required>
+<button type="submit">Vérifier le code</button>
+</form>
+<button type="button" id="renvoyerCode">Renvoyer le code</button>
+</div>
 
-      <h3>J'ai déjà un compte</h3>
-      <form id="connexionForm">
-        <input id="emailConnexion" type="email"
-          placeholder="Ton adresse e-mail" required>
-        <input id="mdpConnexion" type="password"
-          placeholder="Ton mot de passe" required>
-        <button type="submit">Se connecter</button>
-      </form>
-      <button type="button" id="motDePasseOublie">Mot de passe oublié ?</button>
-    </div>
+<hr>
+<h3>J'ai déjà un compte</h3>
+<form id="connexionForm">
+<input id="emailConnexion" type="email" placeholder="Ton adresse e-mail" autocomplete="email" required>
+<input id="mdpConnexion" type="password" placeholder="Ton mot de passe" autocomplete="current-password" required>
+<button type="submit">Se connecter</button>
+</form>
+<button type="button" id="motDePasseOublie">Mot de passe oublié ?</button>
+</div>
 
-    <p id="messageEtat" class="etat" role="status"></p>
+<p id="messageEtat" class="etat" role="status" aria-live="polite"></p>
 
-    <div id="chatZone" hidden>
-      <p>Connecté en tant que <strong id="nomConnecte"></strong></p>
-      <button id="deconnexionBtn" type="button">Se déconnecter</button>
+<div id="chatZone" hidden>
+<p>Connecté en tant que <strong id="nomConnecte"></strong></p>
+<button id="deconnexionBtn" type="button">Se déconnecter</button>
 
-      <!-- RECHERCHE DES MEMBRES -->
-      <div class="recherche-membres">
-        <h3>🔎 Rechercher un membre</h3>
-        <div class="recherche-ligne">
-          <input id="rechercheMembres" type="search"
-            placeholder="Tape le pseudonyme d'un membre">
-          <button id="boutonRecherche" type="button">Rechercher</button>
-        </div>
-        <div id="resultatsMembres" aria-live="polite"></div>
-      </div>
+<div class="recherche-membres">
+<h3>🔎 Rechercher un membre</h3>
+<div class="recherche-ligne">
+<input id="rechercheMembres" type="search" placeholder="Pseudonyme du membre">
+<button id="boutonRecherche" type="button">Rechercher</button>
+</div>
+<div id="resultatsMembres" aria-live="polite"></div>
+</div>
 
-      <h3>💬 Messages de la communauté</h3>
-      <div id="listeMessages" class="lecon" aria-live="polite"></div>
+<h3>💬 Messages de la communauté</h3>
+<div id="listeMessages" class="lecon" aria-live="polite"></div>
+<form id="messageForm">
+<textarea id="texteMessage" placeholder="Écris ton message..." maxlength="1000" rows="3" required></textarea>
+<button type="submit">Envoyer le message</button>
+</form>
+</div>
 
-      <form id="messageForm">
-        <textarea id="texteMessage" placeholder="Écris ton message..."
-          maxlength="2000" rows="3" required></textarea>
-        <button type="submit">Envoyer le message</button>
-      </form>
-    </div>
-
-    <button class="retour" type="button" onclick="accueil()">← RETOUR À L'ACCUEIL</button>
-  </div>
-</section>
+<button class="retour" type="button" onclick="accueil()">← RETOUR À L'ACCUEIL</button>
+</div></section>
 
 <script>
-function masquerToutesLesPages() {
-  document.querySelectorAll(".page").forEach(function(page) {
-    page.style.display = "none";
-  });
+function masquerToutesLesPages(){
+ document.querySelectorAll(".page").forEach(p=>p.style.display="none");
 }
-
-function afficherPage(id) {
-  masquerToutesLesPages();
-  const page = document.getElementById(id);
-
-  if (page) {
-    page.style.display = id === "accueil" ? "flex" : "block";
-    window.scrollTo(0, 0);
-  }
+function afficherPage(id){
+ masquerToutesLesPages();
+ const p=document.getElementById(id);
+ if(p){p.style.display=id==="accueil"?"flex":"block";window.scrollTo(0,0);}
 }
-
-function ouvrirNiveau(numero) {
-  afficherPage("niveau" + numero);
-}
-
-function ouvrirCours(id) {
-  afficherPage(id);
-}
-
-function retourNiveau(numero) {
-  afficherPage("niveau" + numero);
-}
-
-function accueil() {
-  afficherPage("accueil");
-}
-
-function ouvrirCommunaute() {
-  afficherPage("communaute");
-  actualiserComptePA();
-}
-
-/* MENU */
-document.getElementById("boutonMenu").addEventListener("click", function() {
-  document.getElementById("liensWhatsApp").classList.toggle("ouvert");
+function ouvrirNiveau(n){afficherPage("niveau"+n);}
+function ouvrirCours(id){afficherPage(id);}
+function retourNiveau(n){afficherPage("niveau"+n);}
+function accueil(){afficherPage("accueil");}
+function ouvrirCommunaute(){afficherPage("communaute");actualiserComptePA();}
+document.getElementById("boutonMenu").addEventListener("click",()=>{
+ document.getElementById("liensWhatsApp").classList.toggle("ouvert");
 });
-
-document.addEventListener("click", function(event) {
-  const menu = document.querySelector(".menu-whatsapp");
-  if (!menu.contains(event.target)) {
-    document.getElementById("liensWhatsApp").classList.remove("ouvert");
-  }
+document.addEventListener("click",e=>{
+ if(!document.querySelector(".menu-whatsapp").contains(e.target))
+ document.getElementById("liensWhatsApp").classList.remove("ouvert");
 });
 </script>
 
-<!-- SUPABASE -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const PA_URL = "https://tbgbglhmkkiuexiptpjb.supabase.co";
-const PA_KEY = "sb_publishable_DbvkhIUGsL7nrfp3gnoPDQ_fBYXsNWG";
+const PA_URL="https://tbgbglhmkkiuexiptpjb.supabase.co";
+const PA_KEY="sb_publishable_DbvkhIUGsL7nrfp3gnoPDQ_fBYXsNWG";
 
-let paClient = null;
-let paUser = null;
-let paChannel = null;
+let paClient=null,paUser=null,paChannel=null;
+let emailEnAttente="",inscriptionEnAttente=false;
 
-function afficherEtatPA(texte) {
-  document.getElementById("messageEtat").textContent = texte;
+function afficherEtatPA(t){
+ document.getElementById("messageEtat").textContent=t;
+}
+function arreterEcoutePA(){
+ if(paChannel&&paClient){paClient.removeChannel(paChannel);paChannel=null;}
 }
 
-function configurationPAValide() {
-  return PA_URL.startsWith("https://") &&
-    PA_KEY.startsWith("sb_publishable_");
+async function actualiserComptePA(){
+ if(!paClient){afficherEtatPA("Connexion Supabase indisponible. Vérifie la configuration.");return;}
+ const {data,error}=await paClient.auth.getSession();
+ if(error){afficherEtatPA("Impossible de vérifier la connexion.");return;}
+ paUser=data.session?.user||null;
+ document.getElementById("authZone").hidden=!!paUser;
+ document.getElementById("chatZone").hidden=!paUser;
+ if(!paUser){arreterEcoutePA();return;}
+
+ const {data:profil,error:ep}=await paClient.from("profils")
+  .select("pseudonyme").eq("id",paUser.id).maybeSingle();
+ if(ep){console.error(ep);afficherEtatPA("Profil introuvable. Vérifie la table profils et son déclencheur SQL.");}
+ document.getElementById("nomConnecte").textContent=profil?.pseudonyme||paUser.user_metadata?.username||"Membre";
+ await chargerMessagesPA();
+ ecouterMessagesPA();
 }
 
-async function actualiserComptePA() {
-  if (!paClient) {
-    afficherEtatPA("Configure la clé Publishable de Supabase.");
-    return;
-  }
-
-  const { data, error } = await paClient.auth.getSession();
-  if (error) {
-    afficherEtatPA("Impossible de vérifier la connexion.");
-    return;
-  }
-
-  paUser = data.session?.user || null;
-  document.getElementById("authZone").hidden = !!paUser;
-  document.getElementById("chatZone").hidden = !paUser;
-
-  if (!paUser) {
-    arreterEcoutePA();
-    return;
-  }
-
-  const { data: profil, error: erreurProfil } = await paClient
-    .from("profils")
-    .select("pseudonyme")
-    .eq("id", paUser.id)
-    .maybeSingle();
-
-  if (erreurProfil) {
-    afficherEtatPA("Impossible de charger ton profil. Vérifie la table profils.");
-    console.error(erreurProfil);
-    return;
-  }
-
-  document.getElementById("nomConnecte").textContent =
-    profil?.pseudonyme || "Membre";
-
-  await chargerMessagesPA();
-  ecouterMessagesPA();
-}
-
-document.getElementById("inscriptionForm").addEventListener("submit", async function(event) {
-  event.preventDefault();
-
-  const pseudonyme = document.getElementById("nomInscription").value.trim();
-  const email = document.getElementById("emailInscription").value.trim();
-  const password = document.getElementById("mdpInscription").value;
-
-  if (pseudonyme.length < 4 || pseudonyme.length > 30) {
-    afficherEtatPA("Le pseudonyme doit contenir entre 4 et 30 caractères.");
-    return;
-  }
-
-  if (!configurationPAValide() || !paClient) {
-    afficherEtatPA("Configure d'abord Supabase et sa clé Publishable.");
-    return;
-  }
-
-  afficherEtatPA("Création du compte...");
-
-  const { data, error } = await paClient.auth.signUp({
-    email,
-    password,
-    options: { data: { username: pseudonyme } }
+document.getElementById("inscriptionForm").addEventListener("submit",async e=>{
+ e.preventDefault();
+ const pseudonyme=document.getElementById("nomInscription").value.trim();
+ const email=document.getElementById("emailInscription").value.trim();
+ const password=document.getElementById("mdpInscription").value;
+ if(pseudonyme.length<4||pseudonyme.length>30){afficherEtatPA("Le pseudonyme doit contenir 4 à 30 caractères.");return;}
+ if(!paClient){afficherEtatPA("Supabase n'est pas configuré.");return;}
+ const btn=e.submitter; if(btn)btn.disabled=true;
+ afficherEtatPA("Création du compte et envoi du code...");
+ try{
+  const {data,error}=await paClient.auth.signUp({
+   email,password,options:{data:{username:pseudonyme}}
   });
+  if(error)throw error;
+  emailEnAttente=email;
+  inscriptionEnAttente=true;
+  document.getElementById("verificationZone").hidden=false;
+  afficherEtatPA(data.session
+   ?"Compte créé et déjà connecté. Vérifie l'état du compte."
+   :"Si l'inscription est acceptée, consulte ta boîte e-mail pour le code.");
+ }catch(err){afficherEtatPA("Inscription impossible : "+err.message);}
+ finally{if(btn)btn.disabled=false;}
+});
 
-  if (error) {
-    afficherEtatPA("Inscription impossible : " + error.message);
-    return;
-  }
-
-  if (!data.session) {
-    afficherEtatPA("Compte créé. Vérifie tes e-mails pour confirmer ton adresse.");
-    return;
-  }
-
-  afficherEtatPA("Compte créé !");
+document.getElementById("verificationForm").addEventListener("submit",async e=>{
+ e.preventDefault();
+ const token=document.getElementById("codeVerification").value.trim();
+ if(!paClient||!emailEnAttente||!inscriptionEnAttente){afficherEtatPA("Aucune inscription en attente.");return;}
+ if(!/^[0-9]{6,8}$/.test(token)){afficherEtatPA("Entre le code numérique reçu.");return;}
+ const btn=e.submitter;if(btn)btn.disabled=true;
+ afficherEtatPA("Vérification du code...");
+ try{
+  const {error}=await paClient.auth.verifyOtp({email:emailEnAttente,token,type:"signup"});
+  if(error)throw error;
+  inscriptionEnAttente=false;
+  document.getElementById("verificationZone").hidden=true;
+  document.getElementById("inscriptionForm").reset();
+  afficherEtatPA("Adresse confirmée ! Bienvenue dans PURGE ACADEMY.");
   await actualiserComptePA();
+ }catch(err){afficherEtatPA("Vérification impossible : "+err.message);}
+ finally{if(btn)btn.disabled=false;}
 });
 
-document.getElementById("connexionForm").addEventListener("submit", async function(event) {
-  event.preventDefault();
-
-  if (!paClient) {
-    afficherEtatPA("Configure d'abord Supabase.");
-    return;
-  }
-
-  const email = document.getElementById("emailConnexion").value.trim();
-  const password = document.getElementById("mdpConnexion").value;
-
-  const { error } = await paClient.auth.signInWithPassword({ email, password });
-
-  if (error) {
-    afficherEtatPA("Connexion impossible. Vérifie ton e-mail et ton mot de passe.");
-    return;
-  }
-
-  afficherEtatPA("Connexion réussie !");
-  await actualiserComptePA();
+document.getElementById("renvoyerCode").addEventListener("click",async()=>{
+ if(!paClient||!emailEnAttente||!inscriptionEnAttente){afficherEtatPA("Aucune vérification en attente.");return;}
+ afficherEtatPA("Demande de renvoi du code...");
+ const {error}=await paClient.auth.resend({type:"signup",email:emailEnAttente});
+ afficherEtatPA(error?"Renvoi impossible : "+error.message:"Demande envoyée. Vérifie ta boîte e-mail.");
 });
 
-document.getElementById("motDePasseOublie").addEventListener("click", async function() {
-  if (!paClient) {
-    afficherEtatPA("Configure d'abord Supabase.");
-    return;
-  }
-
-  const email = document.getElementById("emailConnexion").value.trim();
-  if (!email) {
-    afficherEtatPA("Entre ton adresse e-mail dans le formulaire de connexion.");
-    return;
-  }
-
-  const { error } = await paClient.auth.resetPasswordForEmail(email, {
-    redirectTo: window.location.origin
-  });
-
-  afficherEtatPA(error
-    ? "Envoi impossible. Vérifie la configuration des e-mails."
-    : "Si le compte existe, un e-mail de réinitialisation sera envoyé.");
+document.getElementById("connexionForm").addEventListener("submit",async e=>{
+ e.preventDefault();
+ if(!paClient){afficherEtatPA("Supabase n'est pas configuré.");return;}
+ const email=document.getElementById("emailConnexion").value.trim();
+ const password=document.getElementById("mdpConnexion").value;
+ afficherEtatPA("Connexion...");
+ const {error}=await paClient.auth.signInWithPassword({email,password});
+ if(error){afficherEtatPA("Connexion impossible : vérifie les identifiants et la confirmation de l'e-mail.");return;}
+ afficherEtatPA("Connexion réussie !");
+ await actualiserComptePA();
 });
 
-document.getElementById("deconnexionBtn").addEventListener("click", async function() {
-  arreterEcoutePA();
-
-  const { error } = await paClient.auth.signOut();
-  if (error) {
-    afficherEtatPA("Déconnexion impossible.");
-    return;
-  }
-
-  document.getElementById("listeMessages").replaceChildren();
-  document.getElementById("resultatsMembres").replaceChildren();
-  afficherEtatPA("Tu es déconnecté.");
-  await actualiserComptePA();
+document.getElementById("motDePasseOublie").addEventListener("click",async()=>{
+ if(!paClient){afficherEtatPA("Supabase n'est pas configuré.");return;}
+ const email=document.getElementById("emailConnexion").value.trim();
+ if(!email){afficherEtatPA("Entre ton e-mail dans le formulaire de connexion.");return;}
+ const {error}=await paClient.auth.resetPasswordForEmail(email,{redirectTo:window.location.origin});
+ afficherEtatPA(error?"Envoi impossible : "+error.message:"Si le compte existe, un e-mail de réinitialisation sera envoyé.");
 });
 
-async function chargerMessagesPA() {
-  const liste = document.getElementById("listeMessages");
-
-  const { data, error } = await paClient
-    .from("messages")
-    .select("id, contenu, user_id, created_at")
-    .order("created_at", { ascending: true })
-    .limit(100);
-
-  if (error) {
-    afficherEtatPA("Impossible de charger les messages. Vérifie les autorisations SQL.");
-    console.error(error);
-    return;
-  }
-
-  liste.replaceChildren();
-
-  for (const message of data || []) {
-    let pseudonyme = "Membre";
-
-    const { data: profil } = await paClient
-      .from("profils")
-      .select("pseudonyme")
-      .eq("id", message.user_id)
-      .maybeSingle();
-
-    if (profil?.pseudonyme) pseudonyme = profil.pseudonyme;
-
-    const bloc = document.createElement("div");
-    bloc.className = "message-membre";
-
-    const auteur = document.createElement("strong");
-    auteur.textContent = pseudonyme;
-
-    const contenu = document.createElement("p");
-    contenu.textContent = message.contenu;
-
-    const date = document.createElement("small");
-    date.textContent = new Date(message.created_at).toLocaleString("fr-FR");
-
-    bloc.append(auteur, contenu, date);
-    liste.appendChild(bloc);
-  }
-}
-
-document.getElementById("messageForm").addEventListener("submit", async function(event) {
-  event.preventDefault();
-
-  if (!paUser) {
-    afficherEtatPA("Connecte-toi pour envoyer un message.");
-    return;
-  }
-
-  const champ = document.getElementById("texteMessage");
-  const contenu = champ.value.trim();
-
-  if (!contenu || contenu.length > 1000) {
-    afficherEtatPA("Le message doit contenir entre 1 et 1000 caractères.");
-    return;
-  }
-
-  const bouton = this.querySelector('button[type="submit"]');
-  bouton.disabled = true;
-
-  try {
-    const { error } = await paClient.from("messages").insert({
-      user_id: paUser.id,
-      contenu
-    });
-
-    if (error) throw error;
-
-    champ.value = "";
-    await chargerMessagesPA();
-    afficherEtatPA("");
-  } catch (error) {
-    afficherEtatPA("Message non envoyé. Vérifie les règles SQL.");
-    console.error(error);
-  } finally {
-    bouton.disabled = false;
-  }
+document.getElementById("deconnexionBtn").addEventListener("click",async()=>{
+ arreterEcoutePA();
+ const {error}=await paClient.auth.signOut();
+ if(error){afficherEtatPA("Déconnexion impossible : "+error.message);return;}
+ document.getElementById("listeMessages").replaceChildren();
+ document.getElementById("resultatsMembres").replaceChildren();
+ afficherEtatPA("Tu es déconnecté.");
+ await actualiserComptePA();
 });
 
-function arreterEcoutePA() {
-  if (paChannel && paClient) {
-    paClient.removeChannel(paChannel);
-    paChannel = null;
-  }
+async function chargerMessagesPA(){
+ if(!paUser)return;
+ const liste=document.getElementById("listeMessages");
+ const {data,error}=await paClient.from("messages")
+  .select("id,contenu,user_id,created_at")
+  .order("created_at",{ascending:true}).limit(100);
+ if(error){afficherEtatPA("Impossible de charger les messages. Vérifie les autorisations SQL.");console.error(error);return;}
+ liste.replaceChildren();
+ const ids=[...new Set((data||[]).map(m=>m.user_id))];
+ let noms={};
+ if(ids.length){
+  const {data:profils,error:erreurProfils}=await paClient.from("profils")
+   .select("id,pseudonyme").in("id",ids);
+  if(!erreurProfils)(profils||[]).forEach(p=>noms[p.id]=p.pseudonyme);
+ }
+ for(const m of data||[]){
+  const bloc=document.createElement("div");bloc.className="message-membre";
+  const auteur=document.createElement("strong");auteur.textContent=noms[m.user_id]||"Membre";
+  const contenu=document.createElement("p");contenu.textContent=m.contenu;
+  const date=document.createElement("small");date.textContent=new Date(m.created_at).toLocaleString("fr-FR");
+  bloc.append(auteur,contenu,date);liste.appendChild(bloc);
+ }
 }
 
-function ecouterMessagesPA() {
-  arreterEcoutePA();
+document.getElementById("messageForm").addEventListener("submit",async e=>{
+ e.preventDefault();
+ if(!paUser){afficherEtatPA("Connecte-toi pour envoyer un message.");return;}
+ const champ=document.getElementById("texteMessage"),contenu=champ.value.trim();
+ if(!contenu||contenu.length>1000){afficherEtatPA("Le message doit contenir de 1 à 1000 caractères.");return;}
+ const btn=e.submitter;if(btn)btn.disabled=true;
+ try{
+  const {error}=await paClient.from("messages").insert({user_id:paUser.id,contenu});
+  if(error)throw error;
+  champ.value="";await chargerMessagesPA();afficherEtatPA("");
+ }catch(err){afficherEtatPA("Message non envoyé : "+err.message);console.error(err);}
+ finally{if(btn)btn.disabled=false;}
+});
 
-  paChannel = paClient
-    .channel("purge-academy-messages")
-    .on("postgres_changes", {
-      event: "INSERT",
-      schema: "public",
-      table: "messages"
-    }, chargerMessagesPA)
-    .subscribe();
+function ecouterMessagesPA(){
+ arreterEcoutePA();
+ paChannel=paClient.channel("purge-academy-messages")
+  .on("postgres_changes",{event:"INSERT",schema:"public",table:"messages"},()=>chargerMessagesPA())
+  .subscribe();
 }
 
-async function rechercherMembresPA() {
-  const champ = document.getElementById("rechercheMembres");
-  const resultats = document.getElementById("resultatsMembres");
-  const terme = champ.value.trim();
-
-  resultats.replaceChildren();
-
-  if (!paUser) {
-    resultats.textContent = "Connecte-toi pour rechercher des membres.";
-    return;
-  }
-
-  if (terme.length < 2) {
-    resultats.textContent = "Entre au moins 2 caractères.";
-    return;
-  }
-
-  resultats.textContent = "Recherche en cours...";
-
-  const { data, error } = await paClient
-    .from("profils")
-    .select("id, pseudonyme")
-    .ilike("pseudonyme", "%" + terme.replace(/[%_,]/g, "") + "%")
-    .neq("id", paUser.id)
-    .limit(20);
-
-  if (error) {
-    resultats.textContent = "Recherche impossible. Vérifie les autorisations de profils.";
-    console.error(error);
-    return;
-  }
-
-  resultats.replaceChildren();
-
-  if (!data?.length) {
-    resultats.textContent = "Aucun membre trouvé.";
-    return;
-  }
-
-  data.forEach(function(membre) {
-    const resultat = document.createElement("div");
-    resultat.className = "resultat-membre";
-
-    const nom = document.createElement("strong");
-    nom.textContent = membre.pseudonyme || "Membre";
-
-    resultat.appendChild(nom);
-    resultats.appendChild(resultat);
-  });
+async function rechercherMembresPA(){
+ const terme=document.getElementById("rechercheMembres").value.trim();
+ const resultats=document.getElementById("resultatsMembres");
+ resultats.replaceChildren();
+ if(!paUser){resultats.textContent="Connecte-toi pour rechercher des membres.";return;}
+ if(terme.length<2){resultats.textContent="Entre au moins 2 caractères.";return;}
+ resultats.textContent="Recherche en cours...";
+ const {data,error}=await paClient.from("profils")
+  .select("id,pseudonyme").ilike("pseudonyme","%"+terme.replace(/[%_,]/g,"")+"%")
+  .neq("id",paUser.id).limit(20);
+ if(error){resultats.textContent="Recherche impossible : vérifie les autorisations SQL.";console.error(error);return;}
+ resultats.replaceChildren();
+ if(!data?.length){resultats.textContent="Aucun membre trouvé.";return;}
+ data.forEach(m=>{
+  const bloc=document.createElement("div");bloc.className="resultat-membre";
+  const nom=document.createElement("strong");nom.textContent=m.pseudonyme||"Membre";
+  bloc.appendChild(nom);resultats.appendChild(bloc);
+ });
 }
+document.getElementById("boutonRecherche").addEventListener("click",rechercherMembresPA);
+document.getElementById("rechercheMembres").addEventListener("keydown",e=>{
+ if(e.key==="Enter"){e.preventDefault();rechercherMembresPA();}
+});
 
-document.getElementById("boutonRecherche")
-  .addEventListener("click", rechercherMembresPA);
-
-document.getElementById("rechercheMembres")
-  .addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      rechercherMembresPA();
-    }
-  });
-
-if (configurationPAValide() && window.supabase) {
-  paClient = window.supabase.createClient(PA_URL, PA_KEY);
-
-  paClient.auth.onAuthStateChange(function() {
-    setTimeout(actualiserComptePA, 0);
-  });
-} else {
-  afficherEtatPA("La communauté sera activée après la configuration de Supabase.");
+if(window.supabase&&PA_URL.startsWith("https://")&&PA_KEY.startsWith("sb_publishable_")){
+ paClient=window.supabase.createClient(PA_URL,PA_KEY);
+ paClient.auth.onAuthStateChange(()=>setTimeout(actualiserComptePA,0));
+}else{
+ afficherEtatPA("Supabase indisponible : vérifie la clé Publishable et la connexion Internet.");
 }
-
 accueil();
 </script>
 </body>
