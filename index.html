@@ -619,11 +619,11 @@ document.addEventListener("click", function(event) {
 });
 </script>
 
-<!-- SUPABASE : les comptes et messages nécessitent un projet configuré -->
+<!-- SUPABASE -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const PA_URL = "http://tbgbglhmkkiuexiptpjb.supabase.co";
-const PA_KEY = "17122008";
+const PA_URL = "https://tbgbglhmkkiuexiptpjb.supabase.co";
+const PA_KEY = "REMPLACE_PAR_TA_CLE_PUBLISHABLE";
 
 let paClient = null;
 let paUser = null;
@@ -635,24 +635,22 @@ function afficherEtatPA(texte) {
 
 function configurationPAValide() {
   return PA_URL.startsWith("https://") &&
-         !PA_URL.includes("COLLE_ICI") &&
-         !PA_KEY.includes("COLLE_ICI");
+    PA_KEY.startsWith("sb_publishable_");
 }
 
 async function actualiserComptePA() {
-  if (!configurationPAValide() || !paClient) {
-    afficherEtatPA("La communauté nécessite la configuration de Supabase.");
+  if (!paClient) {
+    afficherEtatPA("Configure la clé Publishable de Supabase.");
     return;
   }
 
   const { data, error } = await paClient.auth.getSession();
-
   if (error) {
     afficherEtatPA("Impossible de vérifier la connexion.");
     return;
   }
 
-  paUser = data.session ? data.session.user : null;
+  paUser = data.session?.user || null;
   document.getElementById("authZone").hidden = !!paUser;
   document.getElementById("chatZone").hidden = !paUser;
 
@@ -661,19 +659,20 @@ async function actualiserComptePA() {
     return;
   }
 
-  const { data: profil, error: profilErreur } = await paClient
-    .from("profiles")
-    .select("username")
+  const { data: profil, error: erreurProfil } = await paClient
+    .from("profils")
+    .select("pseudonyme")
     .eq("id", paUser.id)
     .maybeSingle();
 
-  if (profilErreur) {
-    afficherEtatPA("Vérifie la configuration de la table profiles dans Supabase.");
+  if (erreurProfil) {
+    afficherEtatPA("Impossible de charger ton profil. Vérifie la table profils.");
+    console.error(erreurProfil);
     return;
   }
 
   document.getElementById("nomConnecte").textContent =
-    profil?.username || paUser.user_metadata?.username || "Membre";
+    profil?.pseudonyme || "Membre";
 
   await chargerMessagesPA();
   ecouterMessagesPA();
@@ -682,26 +681,26 @@ async function actualiserComptePA() {
 document.getElementById("inscriptionForm").addEventListener("submit", async function(event) {
   event.preventDefault();
 
-  if (!configurationPAValide()) {
-    afficherEtatPA("Ajoute l'URL et la clé Supabase dans le code.");
-    return;
-  }
-
-  const username = document.getElementById("nomInscription").value.trim();
+  const pseudonyme = document.getElementById("nomInscription").value.trim();
   const email = document.getElementById("emailInscription").value.trim();
   const password = document.getElementById("mdpInscription").value;
 
-  if (!username || username.length > 40) {
-    afficherEtatPA("Choisis un pseudonyme de 1 à 40 caractères.");
+  if (pseudonyme.length < 4 || pseudonyme.length > 30) {
+    afficherEtatPA("Le pseudonyme doit contenir entre 4 et 30 caractères.");
+    return;
+  }
+
+  if (!configurationPAValide() || !paClient) {
+    afficherEtatPA("Configure d'abord Supabase et sa clé Publishable.");
     return;
   }
 
   afficherEtatPA("Création du compte...");
 
   const { data, error } = await paClient.auth.signUp({
-    email: email,
-    password: password,
-    options: { data: { username: username } }
+    email,
+    password,
+    options: { data: { username: pseudonyme } }
   });
 
   if (error) {
@@ -714,25 +713,22 @@ document.getElementById("inscriptionForm").addEventListener("submit", async func
     return;
   }
 
-  afficherEtatPA("Compte créé.");
+  afficherEtatPA("Compte créé !");
   await actualiserComptePA();
 });
 
 document.getElementById("connexionForm").addEventListener("submit", async function(event) {
   event.preventDefault();
 
-  if (!configurationPAValide()) {
-    afficherEtatPA("Ajoute l'URL et la clé Supabase dans le code.");
+  if (!paClient) {
+    afficherEtatPA("Configure d'abord Supabase.");
     return;
   }
 
   const email = document.getElementById("emailConnexion").value.trim();
   const password = document.getElementById("mdpConnexion").value;
 
-  const { error } = await paClient.auth.signInWithPassword({
-    email: email,
-    password: password
-  });
+  const { error } = await paClient.auth.signInWithPassword({ email, password });
 
   if (error) {
     afficherEtatPA("Connexion impossible. Vérifie ton e-mail et ton mot de passe.");
@@ -744,33 +740,37 @@ document.getElementById("connexionForm").addEventListener("submit", async functi
 });
 
 document.getElementById("motDePasseOublie").addEventListener("click", async function() {
-  if (!configurationPAValide()) {
+  if (!paClient) {
     afficherEtatPA("Configure d'abord Supabase.");
     return;
   }
 
   const email = document.getElementById("emailConnexion").value.trim();
-
   if (!email) {
     afficherEtatPA("Entre ton adresse e-mail dans le formulaire de connexion.");
     return;
   }
 
-  const { error } = await paClient.auth.resetPasswordForEmail(email);
-  afficherEtatPA(error ? "Envoi impossible. Réessaie." :
-    "Si le compte existe, un e-mail de réinitialisation sera envoyé.");
+  const { error } = await paClient.auth.resetPasswordForEmail(email, {
+    redirectTo: window.location.origin
+  });
+
+  afficherEtatPA(error
+    ? "Envoi impossible. Vérifie la configuration des e-mails."
+    : "Si le compte existe, un e-mail de réinitialisation sera envoyé.");
 });
 
 document.getElementById("deconnexionBtn").addEventListener("click", async function() {
   arreterEcoutePA();
-  const { error } = await paClient.auth.signOut();
 
+  const { error } = await paClient.auth.signOut();
   if (error) {
     afficherEtatPA("Déconnexion impossible.");
     return;
   }
 
   document.getElementById("listeMessages").replaceChildren();
+  document.getElementById("resultatsMembres").replaceChildren();
   afficherEtatPA("Tu es déconnecté.");
   await actualiserComptePA();
 });
@@ -780,36 +780,44 @@ async function chargerMessagesPA() {
 
   const { data, error } = await paClient
     .from("messages")
-    .select("id, body, user_id, created_at, profiles(username)")
+    .select("id, contenu, user_id, created_at")
     .order("created_at", { ascending: true })
     .limit(100);
 
   if (error) {
-    afficherEtatPA("Impossible de charger les messages. Vérifie les tables et autorisations Supabase.");
+    afficherEtatPA("Impossible de charger les messages. Vérifie les autorisations SQL.");
     console.error(error);
     return;
   }
 
   liste.replaceChildren();
-  (data || []).forEach(afficherMessagePA);
-}
 
-function afficherMessagePA(message) {
-  const liste = document.getElementById("listeMessages");
-  const bloc = document.createElement("div");
-  bloc.className = "message-membre";
+  for (const message of data || []) {
+    let pseudonyme = "Membre";
 
-  const auteur = document.createElement("strong");
-  auteur.textContent = message.profiles?.username || "Membre";
+    const { data: profil } = await paClient
+      .from("profils")
+      .select("pseudonyme")
+      .eq("id", message.user_id)
+      .maybeSingle();
 
-  const contenu = document.createElement("p");
-  contenu.textContent = message.body;
+    if (profil?.pseudonyme) pseudonyme = profil.pseudonyme;
 
-  const date = document.createElement("small");
-  date.textContent = new Date(message.created_at).toLocaleString("fr-FR");
+    const bloc = document.createElement("div");
+    bloc.className = "message-membre";
 
-  bloc.append(auteur, contenu, date);
-  liste.appendChild(bloc);
+    const auteur = document.createElement("strong");
+    auteur.textContent = pseudonyme;
+
+    const contenu = document.createElement("p");
+    contenu.textContent = message.contenu;
+
+    const date = document.createElement("small");
+    date.textContent = new Date(message.created_at).toLocaleString("fr-FR");
+
+    bloc.append(auteur, contenu, date);
+    liste.appendChild(bloc);
+  }
 }
 
 document.getElementById("messageForm").addEventListener("submit", async function(event) {
@@ -821,29 +829,33 @@ document.getElementById("messageForm").addEventListener("submit", async function
   }
 
   const champ = document.getElementById("texteMessage");
-  const body = champ.value.trim();
+  const contenu = champ.value.trim();
 
-  if (!body) return;
+  if (!contenu || contenu.length > 1000) {
+    afficherEtatPA("Le message doit contenir entre 1 et 1000 caractères.");
+    return;
+  }
 
   const bouton = this.querySelector('button[type="submit"]');
   bouton.disabled = true;
 
-  const { error } = await paClient.from("messages").insert({
-    user_id: paUser.id,
-    body: body
-  });
+  try {
+    const { error } = await paClient.from("messages").insert({
+      user_id: paUser.id,
+      contenu
+    });
 
-  bouton.disabled = false;
+    if (error) throw error;
 
-  if (error) {
+    champ.value = "";
+    await chargerMessagesPA();
+    afficherEtatPA("");
+  } catch (error) {
     afficherEtatPA("Message non envoyé. Vérifie les règles SQL.");
     console.error(error);
-    return;
+  } finally {
+    bouton.disabled = false;
   }
-
-  champ.value = "";
-  await chargerMessagesPA();
-  afficherEtatPA("");
 });
 
 function arreterEcoutePA() {
@@ -859,14 +871,13 @@ function ecouterMessagesPA() {
   paChannel = paClient
     .channel("purge-academy-messages")
     .on("postgres_changes", {
-      event: "*",
+      event: "INSERT",
       schema: "public",
       table: "messages"
     }, chargerMessagesPA)
     .subscribe();
 }
 
-/* RECHERCHE DES MEMBRES PAR PSEUDONYME */
 async function rechercherMembresPA() {
   const champ = document.getElementById("rechercheMembres");
   const resultats = document.getElementById("resultatsMembres");
@@ -887,21 +898,21 @@ async function rechercherMembresPA() {
   resultats.textContent = "Recherche en cours...";
 
   const { data, error } = await paClient
-    .from("profiles")
-    .select("id, username")
-    .ilike("username", "%" + terme.replace(/[%_]/g, "") + "%")
+    .from("profils")
+    .select("id, pseudonyme")
+    .ilike("pseudonyme", "%" + terme.replace(/[%_,]/g, "") + "%")
     .neq("id", paUser.id)
     .limit(20);
 
   if (error) {
-    resultats.textContent = "Recherche impossible. Vérifie les autorisations de profiles.";
+    resultats.textContent = "Recherche impossible. Vérifie les autorisations de profils.";
     console.error(error);
     return;
   }
 
   resultats.replaceChildren();
 
-  if (!data || data.length === 0) {
+  if (!data?.length) {
     resultats.textContent = "Aucun membre trouvé.";
     return;
   }
@@ -911,7 +922,7 @@ async function rechercherMembresPA() {
     resultat.className = "resultat-membre";
 
     const nom = document.createElement("strong");
-    nom.textContent = membre.username || "Membre";
+    nom.textContent = membre.pseudonyme || "Membre";
 
     resultat.appendChild(nom);
     resultats.appendChild(resultat);
@@ -933,12 +944,13 @@ if (configurationPAValide() && window.supabase) {
   paClient = window.supabase.createClient(PA_URL, PA_KEY);
 
   paClient.auth.onAuthStateChange(function() {
-    actualiserComptePA();
+    setTimeout(actualiserComptePA, 0);
   });
+} else {
+  afficherEtatPA("La communauté sera activée après la configuration de Supabase.");
 }
 
 accueil();
 </script>
-
 </body>
 </html>
