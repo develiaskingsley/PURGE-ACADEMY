@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -8,1033 +7,937 @@
 
 <style>
 * {
-       box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-       margin: 0;
-       font-family: Arial, sans-serif;
-       color: white;
-       background: #050505;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+  background: #050505;
 }
 
 button {
-       display: block;
-       width: 100%;
-       max-width: 480px;
-       margin: 14px auto;
-       padding: 17px 12px;
-       color: white;
-       background: rgba(15, 15, 15, 0.92);
-       border: 1px solid #777;
-       border-radius: 8px;
-       font-size: 15px;
-       font-weight: bold;
-       cursor: pointer;
-       transition: 0.25s;
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  margin: 14px auto;
+  padding: 15px 12px;
+  color: white;
+  background: rgba(15, 15, 15, 0.92);
+  border: 1px solid #777;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 button:hover {
-       background: #333;
-       transform: scale(1.02);
+  background: #333;
+}
+
+input, textarea {
+  font: inherit;
 }
 
 .page {
-    display: none;
-    min-height: 100vh;
-    padding: 35px 15px;
-    position: relative;
-    isolation: isolate;
-    background-size: cover;
-    background-position: center;
-}
-.page::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: rgba(0, 0, 0, 0.70);
-}
-
-.page::before {
-       content: "";
-       position: absolute;
-       inset: 0;
-       z-index: -1;
-       background: rgba(0, 0, 0, 0.70);
+  display: none;
+  min-height: 100vh;
+  padding: 35px 15px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 #accueil {
-       display: flex;
-       justify-content: center;
-       align-items: center;
-       text-align: center;
-       background-image: url(https://i.postimg.cc/7PTb6rvV/Whats-App-Image-2026-10-21-at-21-24-12.jpg);
-}
-
-#accueil::before {
-       background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-image: url("https://i.postimg.cc/7PTb6rvV/Whats-App-Image-2026-10-21-at-21-24-12.jpg");
 }
 
 .accueil-contenu {
-       width: 100%;
-       max-width: 650px;
+  width: 100%;
+  max-width: 650px;
 }
 
 .accueil-contenu h1 {
-       font-size: clamp(30px, 7vw, 50px);
-       letter-spacing: 2px;
-       text-shadow: 0 0 15px #888;
+  font-size: clamp(30px, 7vw, 50px);
 }
 
 .sous-titre {
-       color: #ddd;
-       font-size: 18px;
-       line-height: 1.7;
-       margin-bottom: 30px;
+  color: #ddd;
+  font-size: 18px;
 }
 
 .contenu {
-       max-width: 720px;
-       margin: auto;
-       padding: 24px;
-       background: rgba(0, 0, 0, 0.78);
-       border: 1px solid rgba(255, 255, 255, 0.22);
-       border-radius: 12px;
+  max-width: 720px;
+  margin: auto;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid #555;
+  border-radius: 12px;
 }
 
 h2 {
-       text-align: center;
-       font-size: clamp(23px, 5vw, 32px);
+  text-align: center;
 }
 
 .description {
-       color: #ddd;
-       line-height: 1.8;
-       text-align: center;
-       margin: 20px 0 28px;
+  color: #ddd;
+  line-height: 1.8;
+  text-align: center;
 }
 
 .lecon {
-       padding: 20px;
-       min-height: 200px;
-       border-radius: 8px;
-       background: rgba(255, 255, 255, 0.08);
-       line-height: 1.9;
-       overflow-wrap: anywhere;
-}
-
-.lecon h3 {
-       margin-top: 0;
-}
-
-.lecon p {
-       color: #eee;
+  padding: 20px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  line-height: 1.9;
+  overflow-wrap: anywhere;
 }
 
 .signature {
-       margin-top: 30px;
-       text-align: center;
-       letter-spacing: 1px;
-       font-weight: bold;
+  margin-top: 30px;
+  text-align: center;
+  font-weight: bold;
 }
 
 .retour {
-       background: rgba(60, 60, 60, 0.95);
-       margin-top: 25px;
+  background: #333;
+  margin-top: 25px;
 }
 
-/* ARRIÈRE-PLANS DES NIVEAUX */
-
-#niveau1 {
-       background-image: url(https://i.postimg.cc/ryBpvnHM/8837ca3970989f916eba7069d2fa7850.jpg);
+/* RECHERCHE DES MEMBRES */
+.recherche-membres {
+  margin: 20px 0;
+  padding: 16px;
+  background: rgba(20, 20, 20, 0.95);
+  border: 1px solid #555;
+  border-radius: 12px;
 }
 
-#niveau2 {
-       background-image: url(https://i.postimg.cc/ryBpvnHM/8837ca3970989f916eba7069d2fa7850.jpg);
+.recherche-membres h3 {
+  margin-top: 0;
 }
 
-#niveau3 {
-       background-image: url(https://i.postimg.cc/Z5kJMWC0/cb907c5f7b4a3588721caf3404a68611.jpg);
+.recherche-ligne {
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
-#niveau4 {
-       background-image: url(https://i.postimg.cc/fbVnWZ3F/d5771a3383b720411caea52fd9399b8c.jpg);
+.recherche-ligne input {
+  min-width: 0;
+  flex: 1;
+  padding: 12px;
+  color: white;
+  background: #222;
+  border: 1px solid #666;
+  border-radius: 8px;
 }
 
-#niveau5 {
-       background-image: url(https://i.postimg.cc/3xBJ0KJP/4cc67d8274b567bb6c963e401ac2d002.jpg);
+.recherche-ligne button {
+  width: auto;
+  margin: 0;
+  padding: 12px;
 }
 
-/* ARRIÈRE-PLANS DES 10 PARTIES */
-
-#cours11 {
-       background-image: url("images/n1-partie1.jpg");
+.resultat-membre {
+  padding: 12px;
+  margin-top: 10px;
+  background: #242424;
+  border: 1px solid #444;
+  border-radius: 8px;
+  overflow-wrap: anywhere;
 }
 
-#cours12 {
-       background-image: url("images/n1-partie2.jpg");
+#communaute input,
+#communaute textarea {
+  display: block;
+  width: 100%;
+  margin: 12px 0;
+  padding: 14px;
+  color: white;
+  background: #111;
+  border: 1px solid #555;
+  border-radius: 8px;
 }
 
-#cours21 {
-       background-image: url("images/n2-partie1.jpg");
+#communaute [hidden] {
+  display: none !important;
 }
 
-#cours22 {
-       background-image: url("images/n2-partie2.jpg");
+#listeMessages {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 18px 0;
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-wrap: anywhere;
 }
 
-#cours31 {
-       background-image: url("images/n3-partie1.jpg");
+.message-membre {
+  padding: 12px;
+  background: #202020;
+  border: 1px solid #444;
+  border-radius: 10px;
 }
 
-#cours32 {
-       background-image: url("images/n3-partie2.jpg");
+.message-membre p {
+  white-space: pre-wrap;
 }
 
-#cours41 {
-       background-image: url("images/n4-partie1.jpg");
+.message-membre small {
+  color: #bbb;
 }
 
-#cours42 {
-       background-image: url("images/n4-partie2.jpg");
+.etat {
+  min-height: 1.5em;
+  color: #ddd;
 }
 
-#cours51 {
-       background-image: url("images/n5-partie1.jpg");
-}
-
-#cours52 {
-       background-image: url("images/n5-partie2.jpg");
-}
-
-/* ================= MENU TROIS POINTS ================= */
-
+/* MENU */
 .menu-whatsapp {
-       position: fixed;
-       top: 15px;
-       left: 15px;
-       z-index: 2147483647;
-       pointer-events: auto;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 9999;
 }
 
 .bouton-menu {
-       display: flex;
-       position: relative;
-       z-index: 2;
-       pointer-events: auto;
-       touch-action: manipulation;
-       align-items: center;
-       justify-content: center;
-       width: 46px;
-       height: 46px;
-       margin: 0;
-       padding: 0;
-       background: rgba(10, 10, 10, 0.95);
-       color: white;
-       border: 1px solid #777;
-       border-radius: 50%;
-       font-size: 28px;
-       cursor: pointer;
-       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-}
-
-.bouton-menu:hover {
-       background: #333;
-       transform: scale(1.05);
+  width: 46px;
+  height: 46px;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 26px;
 }
 
 .liens-whatsapp {
-       display: none;
-       position: absolute;
-       top: 55px;
-       left: 0;
-       width: 250px;
-       max-width: calc(100vw - 24px);
-       padding: 10px;
-       background: rgba(12, 12, 12, 0.98);
-       border: 1px solid #555;
-       border-radius: 12px;
-       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+  display: none;
+  position: absolute;
+  top: 55px;
+  left: 0;
+  width: 250px;
+  padding: 10px;
+  background: #111;
+  border: 1px solid #555;
+  border-radius: 12px;
 }
 
 .liens-whatsapp.ouvert {
-       display: block;
-       animation: apparition 0.2s ease;
+  display: block;
 }
 
 .liens-whatsapp a {
-       display: flex;
-       align-items: center;
-       gap: 10px;
-       padding: 13px 12px;
-       margin: 4px 0;
-       color: white;
-       text-decoration: none;
-       font-size: 14px;
-       font-weight: bold;
-       border-radius: 7px;
-       background: rgba(255, 255, 255, 0.06);
-       transition: background 0.2s;
-}
-
-.liens-whatsapp a:hover {
-       background: #176b38;
-}
-
-.icone-whatsapp {
-       font-size: 19px;
-}
-
-@keyframes apparition {
-       from {
-           opacity: 0;
-           transform: translateY(-5px);
-       }
-
-       to {
-           opacity: 1;
-           transform: translateY(0);
-       }
+  display: block;
+  padding: 12px;
+  margin: 4px 0;
+  color: white;
+  text-decoration: none;
+  background: #222;
+  border-radius: 7px;
 }
 
 @media (max-width: 600px) {
-       .contenu {
-           padding: 18px;
-       }
+  .contenu {
+    padding: 18px;
+  }
 
-       button {
-           font-size: 14px;
-           padding: 16px 10px;
-       }
+  .page {
+    padding: 22px 12px;
+  }
 
-       .page {
-           padding: 22px 12px;
-           background-attachment: scroll;
-       }
+  .recherche-ligne {
+    flex-wrap: wrap;
+  }
 
-       .menu-whatsapp {
-           top: 10px;
-           left: 10px;
-           z-index: 2147483647;
-       }
+  .recherche-ligne input {
+    flex-basis: 100%;
+  }
 
-       .bouton-menu {
-           width: 42px;
-           height: 42px;
-       }
-
-       .liens-whatsapp {
-           width: 230px;
-           left: 0;
-           right: auto;
-       }
+  .recherche-ligne button {
+    width: 100%;
+  }
 }
 </style>
-
 </head>
 
 <body>
 
-<!-- ================= MENU WHATSAPP ================= -->
-
+<!-- MENU -->
 <div class="menu-whatsapp">
-
-<button
-    type="button"
-    class="bouton-menu"
-    id="boutonMenu"
-    aria-label="Ouvrir le menu"
-    aria-expanded="false"
-    aria-controls="liensWhatsApp">
-    ⋮
-</button>
-
-<div class="liens-whatsapp" id="liensWhatsApp">
-
+  <button type="button" class="bouton-menu" id="boutonMenu">⋮</button>
+  <div class="liens-whatsapp" id="liensWhatsApp">
     <a href="https://whatsapp.com/channel/0029Vb8gL4oCnA80vErXTe37"
-       target="_blank"
-       rel="noopener noreferrer">
-        <span class="icone-whatsapp">📢</span>
-        <span>Ma chaîne WhatsApp</span>
-    </a>
-
-    <a href="https://chat.whatsapp.com/CB1JtzF7qkFDblv6Kc6Mfa?s=cl&p=a&mlu=4&ilr=4"
-       target="_blank"
-       rel="noopener noreferrer">
-        <span class="icone-whatsapp">👥</span>
-        <span>Mon groupe WhatsApp</span>
-    </a>
-
-    <a href="https://chat.whatsapp.com/KRsDZCveEtyBOEQ2T4fRYM?s=cl&p=a&mlu=4&ilr=4&iam=2"
-       target="_blank"
-       rel="noopener noreferrer">
-        <span class="icone-whatsapp">💬</span>
-        <span>Me contacter</span>
-    </a>
-
+       target="_blank" rel="noopener noreferrer">📢 Ma chaîne WhatsApp</a>
+    <a href="https://chat.whatsapp.com/CB1JtzF7qkFDblv6Kc6Mfa"
+       target="_blank" rel="noopener noreferrer">👥 Mon groupe WhatsApp</a>
+    <a href="https://chat.whatsapp.com/KRsDZCveEtyBOEQ2T4fRYM"
+       target="_blank" rel="noopener noreferrer">💬 Me contacter</a>
+  </div>
 </div>
 
-
-</div>
-
-<!-- ================= ACCUEIL ================= -->
-
+<!-- ACCUEIL -->
 <section class="page" id="accueil">
-       <div class="accueil-contenu">
-
+  <div class="accueil-contenu">
     <h1>⚔️ PURGE ACADEMY</h1>
-
-    
-
-    <button onclick="ouvrirNiveau(1)">
-        NIVEAU 01 — INITIATION
-    </button>
-
-    <button onclick="ouvrirNiveau(2)">
-        NIVEAU 02 — OBSERVATION
-    </button>
-
-    <button onclick="ouvrirNiveau(3)">
-        NIVEAU 03 — STRATÉGIE
-    </button>
-
-    <button onclick="ouvrirNiveau(4)">
-        NIVEAU 04 — DÉFENSE
-    </button>
-
-    <button onclick="ouvrirNiveau(5)">
-        NIVEAU 05 — ÉPREUVE FINALE
-    </button>
-
-    <p class="signature">DEV ELIAS D KINGSLEY</p>
-</div>
-
-
+    <p class="sous-titre">Bienvenue dans ton académie</p>
+    <button onclick="ouvrirCommunaute()">👤 CRÉER MON COMPTE</button>
+    <button onclick="afficherPage('choixCours')">📚 SUIVRE LE COURS</button>
+    <p class="signature">DEV ELIAS D KINGSLEY 🫴🏾✨🕯️</p>
+  </div>
 </section>
 
-<!-- ================= NIVEAU 1 ================= -->
+<!-- MENU DES COURS -->
+<section class="page" id="choixCours">
+  <div class="contenu">
+    <h2>📚 SUIVRE LE COURS PURGE ACADEMY</h2>
+    <p class="description">Choisis le niveau que tu veux étudier.</p>
+    <button onclick="ouvrirNiveau(1)">NIVEAU 01 — INITIATION</button>
+    <button onclick="ouvrirNiveau(2)">NIVEAU 02 — OBSERVATION</button>
+    <button onclick="ouvrirNiveau(3)">NIVEAU 03 — STRATÉGIE</button>
+    <button onclick="ouvrirNiveau(4)">NIVEAU 04 — DÉFENSE</button>
+    <button onclick="ouvrirNiveau(5)">NIVEAU 05 — ÉPREUVE FINALE</button>
+    <button class="retour" onclick="accueil()">← RETOUR À L'ACCUEIL</button>
+  </div>
+</section>
 
+<!-- NIVEAU 1 -->
 <section class="page" id="niveau1">
-       <div class="contenu">
-
+  <div class="contenu">
     <h2>NIVEAU 01 — INITIATION</h2>
-
-    <p class="description">
-        Bienvenue dans le premier niveau.
-        Découvre l'univers fictif de PURGE ACADEMY
-        et apprends les règles fondamentales.
-    </p>
-
-    <button onclick="ouvrirCours('cours11')">
-        PARTIE 01 — DÉCOUVRIR L'UNIVERS
-    </button>
-
-    <button onclick="ouvrirCours('cours12')">
-        PARTIE 02 — LES RÈGLES GÉNÉRALES
-    </button>
-
-    <button class="retour" onclick="accueil()">
-        ← RETOUR À L'ACCUEIL
-    </button>
-</div>
-
-
+    <p class="description">Bienvenue dans le premier niveau. Découvre l'univers fictif de PURGE ACADEMY et apprends les règles fondamentales.</p>
+    <button onclick="ouvrirCours('cours11')">PARTIE 01 — DÉCOUVRIR L'UNIVERS</button>
+    <button onclick="ouvrirCours('cours12')">PARTIE 02 — LES RÈGLES GÉNÉRALES</button>
+    <button class="retour" onclick="afficherPage('choixCours')">← RETOUR AUX NIVEAUX</button>
+  </div>
 </section>
 
-<!-- ================= NIVEAU 2 ================= -->
-
+<!-- NIVEAU 2 -->
 <section class="page" id="niveau2">
-       <div class="contenu">
-
+  <div class="contenu">
     <h2>NIVEAU 02 — OBSERVATION</h2>
-
-    <p class="description">
-        Apprends à observer, à recueillir les informations
-        importantes et à examiner une situation fictive.
-    </p>
-
-    <button onclick="ouvrirCours('cours21')">
-        PARTIE 01 — OBSERVER UN SCÉNARIO
-    </button>
-
-    <button onclick="ouvrirCours('cours22')">
-        PARTIE 02 — ANALYSER UNE SITUATION
-    </button>
-
-    <button class="retour" onclick="accueil()">
-        ← RETOUR À L'ACCUEIL
-    </button>
-</div>
-
-
+    <p class="description">Apprends à observer et à examiner une situation fictive.</p>
+    <button onclick="ouvrirCours('cours21')">PARTIE 01 — OBSERVER UN SCÉNARIO</button>
+    <button onclick="ouvrirCours('cours22')">PARTIE 02 — ANALYSER UNE SITUATION</button>
+    <button class="retour" onclick="afficherPage('choixCours')">← RETOUR AUX NIVEAUX</button>
+  </div>
 </section>
 
-<!-- ================= NIVEAU 3 ================= -->
-
+<!-- NIVEAU 3 -->
 <section class="page" id="niveau3">
-       <div class="contenu">
-
+  <div class="contenu">
     <h2>NIVEAU 03 — STRATÉGIE</h2>
-
-    <p class="description">
-        Développe ton raisonnement, organise tes idées
-        et apprends à évaluer les conséquences de tes choix.
-    </p>
-
-    <button onclick="ouvrirCours('cours31')">
-        PARTIE 01 — COMPRENDRE LA STRATÉGIE
-    </button>
-
-    <button onclick="ouvrirCours('cours32')">
-        PARTIE 02 — RÉSOUDRE UN SCÉNARIO
-    </button>
-
-    <button class="retour" onclick="accueil()">
-        ← RETOUR À L'ACCUEIL
-    </button>
-</div>
-
-
+    <p class="description">Développe ton raisonnement et apprends à évaluer les conséquences de tes choix.</p>
+    <button onclick="ouvrirCours('cours31')">PARTIE 01 — COMPRENDRE LA STRATÉGIE</button>
+    <button onclick="ouvrirCours('cours32')">PARTIE 02 — RÉSOUDRE UN SCÉNARIO</button>
+    <button class="retour" onclick="afficherPage('choixCours')">← RETOUR AUX NIVEAUX</button>
+  </div>
 </section>
 
-<!-- ================= NIVEAU 4 ================= -->
-
+<!-- NIVEAU 4 -->
 <section class="page" id="niveau4">
-       <div class="contenu">
-
+  <div class="contenu">
     <h2>NIVEAU 04 — DÉFENSE</h2>
-
-    <p class="description">
-        Apprends à reconnaître les risques,
-        à éviter les conflits et à privilégier la sécurité.
-    </p>
-
-    <button onclick="ouvrirCours('cours41')">
-        PARTIE 01 — RECONNAÎTRE LES RISQUES
-    </button>
-
-    <button onclick="ouvrirCours('cours42')">
-        PARTIE 02 — PRÉVENTION ET SÉCURITÉ
-    </button>
-
-    <button class="retour" onclick="accueil()">
-        ← RETOUR À L'ACCUEIL
-    </button>
-</div>
-
-
+    <p class="description">Apprends à reconnaître les risques et à privilégier la sécurité.</p>
+    <button onclick="ouvrirCours('cours41')">PARTIE 01 — RECONNAÎTRE LES RISQUES</button>
+    <button onclick="ouvrirCours('cours42')">PARTIE 02 — PRÉVENTION ET SÉCURITÉ</button>
+    <button class="retour" onclick="afficherPage('choixCours')">← RETOUR AUX NIVEAUX</button>
+  </div>
 </section>
 
-<!-- ================= NIVEAU 5 ================= -->
-
+<!-- NIVEAU 5 -->
 <section class="page" id="niveau5">
-       <div class="contenu">
-
+  <div class="contenu">
     <h2>NIVEAU 05 — ÉPREUVE FINALE</h2>
-
-    <p class="description">
-        Dernière étape de la formation.
-        Révise tes connaissances et prépare-toi
-        à l'évaluation finale.
-    </p>
-
-    <button onclick="ouvrirCours('cours51')">
-        PARTIE 01 — RÉVISION GÉNÉRALE
-    </button>
-
-    <button onclick="ouvrirCours('cours52')">
-        PARTIE 02 — ÉVALUATION FINALE
-    </button>
-
-    <button class="retour" onclick="accueil()">
-        ← RETOUR À L'ACCUEIL
-    </button>
-</div>
-
-
+    <p class="description">Dernière étape de la formation.</p>
+    <button onclick="ouvrirCours('cours51')">PARTIE 01 — RÉVISION GÉNÉRALE</button>
+    <button onclick="ouvrirCours('cours52')">PARTIE 02 — ÉVALUATION FINALE</button>
+    <button class="retour" onclick="afficherPage('choixCours')">← RETOUR AUX NIVEAUX</button>
+  </div>
 </section>
 
-<!-- ================= COURS 1.1 ================= -->
-
+<!-- COURS 1.1 -->
 <section class="page" id="cours11">
-       <div class="contenu">
-
+  <div class="contenu">
     <h2>PARTIE 01 — DÉCOUVRIR L'UNIVERS</h2>
-
     <div class="lecon">
-        <h3>Bienvenue à PURGE ACADEMY</h3>
-
-        <p>
-            PURGE ACADEMY est un site consacré à la découverte
-            de l'univers de la purge virtuelle, à la compréhension
-            des bannissements et aux moyens de se protéger
-            contre les abus.
-        </p>
-
-        <p>
-            PURGE ACADEMY a été créée le 00/10/2026
-            par le dev ELIAS D KINGSLEY 🫴🏾✨🕯️.
-        </p>
-
-        <p>
-            Sur ce, allez-y, apprenez et bonne lecture à tous
-            🫴🏾✨🕯️.
-        </p>
-
-        <p>
-            <strong>Objectif :</strong> présentation.
-        </p>
+      <h3>Bienvenue à PURGE ACADEMY</h3>
+      <p>PURGE ACADEMY est un site consacré à la découverte de l'univers de la purge virtuelle, à la compréhension des bannissements et aux moyens de se protéger contre les abus.</p>
+      <p>PURGE ACADEMY a été créée le 00/10/2026 par le dev ELIAS D KINGSLEY 🫴🏾✨🕯️.</p>
+      <p>Sur ce, allez-y, apprenez et bonne lecture à tous 🫴🏾✨🕯️.</p>
+      <p><strong>Objectif :</strong> présentation.</p>
     </div>
-
-    <button class="retour" onclick="retourNiveau(1)">
-        ← RETOUR AU NIVEAU 1
-    </button>
-</div>
-
-
+    <button class="retour" onclick="retourNiveau(1)">← RETOUR AU NIVEAU 1</button>
+  </div>
 </section>
 
-<!-- ================= COURS 1.2 ================= -->
-
+<!-- COURS 1.2 -->
 <section class="page" id="cours12">
-       <div class="contenu">
-
+  <div class="contenu">
     <h2>PARTIE 02 — LES RÈGLES GÉNÉRALES</h2>
-
     <div class="lecon">
-        <h3>Les règles de l'académie</h3>
-
-        <p>
-            La purge est un univers virtuel notamment basé sur
-            la suppression de membres d'un groupe ou d'une
-            communauté par des personnes disposant du rôle
-            d'administrateur. Au fil du temps, cet univers a
-            évolué avec l'apparition de bugs, de bots et de
-            nouvelles situations.
-        </p>
-
-        <p>
-            <strong>Objectif :</strong> définition de la purge.
-        </p>
+      <h3>Les règles de l'académie</h3>
+      <p>La purge est un univers virtuel notamment basé sur la suppression de membres d'un groupe ou d'une communauté par des personnes disposant du rôle d'administrateur. Au fil du temps, cet univers a évolué avec l'apparition de bugs, de bots et de nouvelles situations.</p>
+      <p><strong>Objectif :</strong> définition de la purge.</p>
     </div>
-
-    <button class="retour" onclick="retourNiveau(1)">
-        ← RETOUR AU NIVEAU 1
-    </button>
-</div>
-
-
+    <button class="retour" onclick="retourNiveau(1)">← RETOUR AU NIVEAU 1</button>
+  </div>
 </section>
 
-<!-- ================= COURS 2.1 ================= -->
-
+<!-- COURS 2.1 -->
 <section class="page" id="cours21">
-       <div class="contenu">
-
+  <div class="contenu">
     <h2>PARTIE 01 — OBSERVER UN SCÉNARIO</h2>
-
     <div class="lecon">
-        <h3>LA DÉFINITION AU COMPLET</h3>
-
-        <p>
-            Comme je l'ai expliqué, la purge est un univers
-            virtuel notamment basé sur la suppression de
-            membres d'un groupe ou d'une communauté par
-            des personnes disposant du rôle d'administrateur.
-        </p>
-
-        <p>
-            Avec le temps, cet univers a évolué avec des bugs,
-            des bots, des méthodes de bannissement et des
-            conflits entre clans. La deuxième génération
-            a notamment connu de nombreux conflits entre clans.
-        </p>
-
-        <p>
-            <strong>
-                Imagine une guerre virtuelle basée sur les
-                bannissements de comptes WhatsApp et les
-                problèmes techniques qui peuvent perturber
-                l'utilisation de WhatsApp et de Meta.
-            </strong>
-        </p>
+      <h3>LA DÉFINITION AU COMPLET</h3>
+      <p>Comme je l'ai expliqué, la purge est un univers virtuel notamment basé sur la suppression de membres d'un groupe ou d'une communauté par des personnes disposant du rôle d'administrateur.</p>
+      <p>Avec le temps, cet univers a évolué avec des bugs, des bots, des méthodes de bannissement et des conflits entre clans.</p>
+      <p>Imagine une guerre virtuelle basée sur les bannissements de comptes WhatsApp et les problèmes techniques qui peuvent perturber l'utilisation de WhatsApp et de Meta.</p>
     </div>
-
-    <button class="retour" onclick="retourNiveau(2)">
-        ← RETOUR AU NIVEAU 2
-    </button>
-</div>
-
-
+    <button class="retour" onclick="retourNiveau(2)">← RETOUR AU NIVEAU 2</button>
+  </div>
 </section>
 
-<!-- ================= COURS 2.2 ================= -->
-
+<!-- COURS 2.2 -->
 <section class="page" id="cours22">
-       <div class="contenu">
-
+  <div class="contenu">
     <h2>PARTIE 02 — ANALYSER UNE SITUATION</h2>
-
     <div class="lecon">
-        <h3>Analyser avant de conclure</h3>
-
-        <p>
-            Analyser consiste à comprendre un problème
-            et à comparer plusieurs solutions possibles.
-            Tous les conflits ne méritent pas qu'on s'y engage.
-            Parfois, il vaut mieux garder son calme et réfléchir
-            avant d'agir.
-        </p>
-
-        <p>
-            Être un bon stratège ne signifie pas seulement
-            savoir gérer un conflit : cela signifie aussi
-            savoir prendre les bonnes décisions au bon moment.
-            Si tu veux devenir un chef de clan, évite de te lancer
-            dans n'importe quelle guerre simplement pour te faire
-            remarquer. Prends le temps d'analyser la situation
-            avant de décider quoi faire 🫴🏾✨🕯️.
-        </p>
-
-        <p>
-            Demande-toi : quelles informations sont certaines ?
-            Quelles sont les options disponibles ?
-            Quelles pourraient être leurs conséquences ?
-        </p>
+      <h3>Analyser avant de conclure</h3>
+      <p>Analyser consiste à comprendre un problème et à comparer plusieurs solutions possibles. Tous les conflits ne méritent pas qu'on s'y engage. Parfois, il vaut mieux garder son calme et réfléchir avant d'agir.</p>
+      <p>Être un bon stratège signifie savoir prendre les bonnes décisions au bon moment. Prends le temps d'analyser la situation avant de décider quoi faire 🫴🏾✨🕯️.</p>
+      <p>Demande-toi : quelles informations sont certaines ? Quelles sont les options disponibles ? Quelles pourraient être leurs conséquences ?</p>
     </div>
-
-    <button class="retour" onclick="retourNiveau(2)">
-        ← RETOUR AU NIVEAU 2
-    </button>
-</div>
-
-
+    <button class="retour" onclick="retourNiveau(2)">← RETOUR AU NIVEAU 2</button>
+  </div>
 </section>
 
-<!-- ================= COURS 3.1 ================= -->
-
+<!-- COURS 3.1 -->
 <section class="page" id="cours31">
-       <div class="contenu">
-
-    <h2>COMMENT CE DEFENDRE DEVANT UNE SITUATION</h2>
-
+  <div class="contenu">
+    <h2>COMMENT SE DÉFENDRE DEVANT UNE SITUATION</h2>
     <div class="lecon">
-        <h3>Organiser ses idées</h3>
-
-        <p>
-            DEVANT LES ATTAQUES, IL N’Y A QU’UNE SEULE
-             MANIÈRE D’AGIR : SPAMMER LES ENNEMIS QUI T’ATTAQUENT
-              OU LES PURGER. PARFOIS, TU PEUX UTILISER DES BUGS POUR
-               LES ATTAQUER, MAIS LE MIEUX RESTE ENCORE LA PURGE.
-                PROUVE-LEUR QUE C’EST TOI, LA VRAIE PURGE. 🫴🏾✨🕯️
-        </p>
-
-        <p>
-            N’OUBLIE PAS : CHAQUE ATTAQUE DOIT ÊTRE ACCOMPAGNÉE D’UNE STRATÉGIE.
-
-NE TE LANCE PAS À L’AVEUGLE !
- PRÉPARE BIEN TA STRATÉGIE, PUIS PASSE À
-  L’ATTAQUE. 🫴🏾✨🕯️
-        </p>
-
-        
+      <h3>Organiser ses idées</h3>
+      <p>DEVANT LES ATTAQUES, GARDE TON CALME, DOCUMENTE CE QUI SE PASSE ET UTILISE LES OUTILS DE SIGNALEMENT APPROPRIÉS. ÉVITE LE SPAM ET LES ACTIONS QUI POURRAIENT METTRE D'AUTRES COMPTES EN DANGER. 🫴🏾✨🕯️</p>
+      <p>N'OUBLIE PAS : CHAQUE DÉCISION DOIT ÊTRE ACCOMPAGNÉE D'UNE STRATÉGIE. NE TE LANCE PAS À L'AVEUGLE !</p>
     </div>
-
-    <button class="retour" onclick="retourNiveau(3)">
-        ← RETOUR AU NIVEAU 3
-    </button>
-</div>
-
-
+    <button class="retour" onclick="retourNiveau(3)">← RETOUR AU NIVEAU 3</button>
+  </div>
 </section>
 
-<!-- ================= COURS 3.2 ================= -->
-
+<!-- COURS 3.2 -->
 <section class="page" id="cours32">
-       <div class="contenu">
-
+  <div class="contenu">
     <h2>PARTIE 02 — RÉSOUDRE UN SCÉNARIO</h2>
-
     <div class="lecon">
-        <h3>Trouver une solution</h3>
-
-        <p>
-            Pour résoudre un problème, commence par le définir.
-            Ensuite, imagine plusieurs solutions et compare
-            leurs avantages et leurs inconvénients.
-        </p>
-
-        <p>
-            Une décision réfléchie tient compte des personnes
-            concernées et des conséquences possibles.
-        </p>
-
-        <p>
-            <strong>Exercice :</strong> un groupe n'arrive pas
-            à choisir un projet. Propose une méthode juste
-            pour que chacun puisse donner son avis.
-        </p>
+      <h3>Trouver une solution</h3>
+      <p>Pour résoudre un problème, commence par le définir. Ensuite, imagine plusieurs solutions et compare leurs avantages et leurs inconvénients.</p>
+      <p>Une décision réfléchie tient compte des personnes concernées et des conséquences possibles.</p>
+      <p><strong>Exercice :</strong> un groupe n'arrive pas à choisir un projet. Propose une méthode juste pour que chacun puisse donner son avis.</p>
     </div>
-
-    <button class="retour" onclick="retourNiveau(3)">
-        ← RETOUR AU NIVEAU 3
-    </button>
-</div>
-
-
+    <button class="retour" onclick="retourNiveau(3)">← RETOUR AU NIVEAU 3</button>
+  </div>
 </section>
 
-<!-- ================= COURS 4.1 ================= -->
-
+<!-- COURS 4.1 -->
 <section class="page" id="cours41">
-       <div class="contenu">
-
+  <div class="contenu">
     <h2>PARTIE 01 — RECONNAÎTRE LES RISQUES</h2>
-
     <div class="lecon">
-        <h3>Identifier les dangers</h3>
-
-        <p>
-            Reconnaître un risque permet de prendre des
-            précautions avant qu'une situation ne devienne
-            dangereuse.
-        </p>
-
-        <p>
-            Observe ton environnement, respecte les consignes
-            de sécurité et demande conseil en cas de doute.
-        </p>
-
-        <p>
-            <strong>Exercice :</strong> dans un scénario fictif,
-            identifie deux risques et propose une précaution
-            adaptée à chacun.
-        </p>
+      <h3>Identifier les dangers</h3>
+      <p>Reconnaître un risque permet de prendre des précautions avant qu'une situation ne devienne dangereuse.</p>
+      <p>Observe ton environnement, respecte les consignes de sécurité et demande conseil en cas de doute.</p>
+      <p><strong>Exercice :</strong> dans un scénario fictif, identifie deux risques et propose une précaution adaptée à chacun.</p>
     </div>
-
-    <button class="retour" onclick="retourNiveau(4)">
-        ← RETOUR AU NIVEAU 4
-    </button>
-</div>
-
-
+    <button class="retour" onclick="retourNiveau(4)">← RETOUR AU NIVEAU 4</button>
+  </div>
 </section>
 
-<!-- ================= COURS 4.2 ================= -->
-
+<!-- COURS 4.2 -->
 <section class="page" id="cours42">
-       <div class="contenu">
-
+  <div class="contenu">
     <h2>PARTIE 02 — PRÉVENTION ET SÉCURITÉ</h2>
-
     <div class="lecon">
-        <h3>La sécurité avant tout</h3>
-
-        <p>
-            La prévention consiste à réduire les risques
-            et à éviter que les problèmes ne s'aggravent.
-        </p>
-
-        <p>
-            En cas de conflit, évite la confrontation,
-            éloigne-toi si nécessaire et cherche l'aide
-            d'un adulte de confiance ou des services d'urgence
-            si une personne est en danger.
-        </p>
-
-        <p>
-            <strong>Exercice :</strong> imagine un désaccord
-            qui devient tendu. Propose trois étapes pour
-            demander de l'aide et retrouver le calme.
-        </p>
+      <h3>La sécurité avant tout</h3>
+      <p>La prévention consiste à réduire les risques et à éviter que les problèmes ne s'aggravent.</p>
+      <p>En cas de conflit, évite la confrontation, éloigne-toi si nécessaire et cherche de l'aide si une personne est en danger.</p>
+      <p><strong>Exercice :</strong> imagine un désaccord qui devient tendu. Propose trois étapes pour demander de l'aide et retrouver le calme.</p>
     </div>
-
-    <button class="retour" onclick="retourNiveau(4)">
-        ← RETOUR AU NIVEAU 4
-    </button>
-</div>
-
-
+    <button class="retour" onclick="retourNiveau(4)">← RETOUR AU NIVEAU 4</button>
+  </div>
 </section>
 
-<!-- ================= COURS 5.1 ================= -->
-
+<!-- COURS 5.1 -->
 <section class="page" id="cours51">
-       <div class="contenu">
-
+  <div class="contenu">
     <h2>PARTIE 01 — RÉVISION GÉNÉRALE</h2>
-
     <div class="lecon">
-        <h3>Révise ton parcours</h3>
-
-        <p>
-            Tu as parcouru les thèmes de l'initiation,
-            de l'observation, de la stratégie, de la prévention
-            et de la sécurité.
-        </p>
-
-        <p>
-            Vérifie que tu sais distinguer les faits
-            des suppositions, comparer plusieurs solutions
-            et réfléchir aux conséquences de tes décisions.
-        </p>
-
-        <p>
-            <strong>Exercice :</strong> résume les quatre
-            premiers niveaux en quelques phrases.
-            Donne un exemple fictif pour chaque thème.
-        </p>
+      <h3>Révise ton parcours</h3>
+      <p>Tu as parcouru les thèmes de l'initiation, de l'observation, de la stratégie, de la prévention et de la sécurité.</p>
+      <p>Vérifie que tu sais distinguer les faits des suppositions, comparer plusieurs solutions et réfléchir aux conséquences de tes décisions.</p>
+      <p><strong>Exercice :</strong> résume les quatre premiers niveaux en quelques phrases. Donne un exemple fictif pour chaque thème.</p>
     </div>
-
-    <button class="retour" onclick="retourNiveau(5)">
-        ← RETOUR AU NIVEAU 5
-    </button>
-</div>
-
-
+    <button class="retour" onclick="retourNiveau(5)">← RETOUR AU NIVEAU 5</button>
+  </div>
 </section>
 
-<!-- ================= COURS 5.2 ================= -->
-
+<!-- COURS 5.2 -->
 <section class="page" id="cours52">
-       <div class="contenu">
-
+  <div class="contenu">
     <h2>PARTIE 02 — ÉVALUATION FINALE</h2>
-
     <div class="lecon">
-        <h3>Épreuve finale de PURGE ACADEMY</h3>
-
-        <p>
-            Bienvenue dans la dernière partie de ta formation.
-            Réponds aux questions dans ton cahier.
-        </p>
-
-        <p>
-            <strong>Question 1 :</strong> pourquoi faut-il
-            observer avant de prendre une décision ?
-        </p>
-
-        <p>
-            <strong>Question 2 :</strong> quelle est la différence
-            entre un fait et une supposition ?
-        </p>
-
-        <p>
-            <strong>Question 3 :</strong> comment résoudre
-            un désaccord de façon pacifique ?
-        </p>
-
-        <p>
-            <strong>Question 4 :</strong> que faut-il privilégier
-            lorsqu'une situation devient dangereuse ?
-        </p>
-
-        <p>
-            <strong>Félicitations !</strong> Tu es arrivé
-            au terme des cinq niveaux de PURGE ACADEMY.
-        </p>
-
-        <p>
-            Continue à apprendre, à réfléchir et à respecter
-            les autres.
-        </p>
-
-        <h3 class="signature">DEV ELIAS D KINGSLEY</h3>
+      <h3>Épreuve finale de PURGE ACADEMY</h3>
+      <p>Bienvenue dans la dernière partie de ta formation. Réponds aux questions dans ton cahier.</p>
+      <p><strong>Question 1 :</strong> pourquoi faut-il observer avant de prendre une décision ?</p>
+      <p><strong>Question 2 :</strong> quelle est la différence entre un fait et une supposition ?</p>
+      <p><strong>Question 3 :</strong> comment résoudre un désaccord de façon pacifique ?</p>
+      <p><strong>Question 4 :</strong> que faut-il privilégier lorsqu'une situation devient dangereuse ?</p>
+      <p><strong>Félicitations !</strong> Tu es arrivé au terme des cinq niveaux de PURGE ACADEMY.</p>
+      <p>Continue à apprendre, à réfléchir et à respecter les autres.</p>
+      <h3 class="signature">DEV ELIAS D KINGSLEY</h3>
     </div>
-
-    <button class="retour" onclick="retourNiveau(5)">
-        ← RETOUR AU NIVEAU 5
-    </button>
-
-    <button onclick="accueil()">
-        🏠 RETOUR À L'ACCUEIL
-    </button>
-</div>
-
-
+    <button class="retour" onclick="retourNiveau(5)">← RETOUR AU NIVEAU 5</button>
+    <button onclick="accueil()">🏠 RETOUR À L'ACCUEIL</button>
+  </div>
 </section>
 
-<!-- ================= JAVASCRIPT ================= -->
+<!-- COMMUNAUTÉ -->
+<section class="page" id="communaute">
+  <div class="contenu">
+    <h2>💬 PURGE ACADEMY — COMMUNAUTÉ</h2>
+
+    <div id="authZone">
+      <h3>Créer un compte</h3>
+      <form id="inscriptionForm">
+        <input id="nomInscription" type="text"
+          placeholder="Ton nom ou pseudonyme" maxlength="40" required>
+        <input id="emailInscription" type="email"
+          placeholder="Ton adresse e-mail" required>
+        <input id="mdpInscription" type="password"
+          placeholder="Mot de passe (6 caractères minimum)"
+          minlength="6" required>
+        <button type="submit">Créer mon compte</button>
+      </form>
+
+      <hr>
+
+      <h3>J'ai déjà un compte</h3>
+      <form id="connexionForm">
+        <input id="emailConnexion" type="email"
+          placeholder="Ton adresse e-mail" required>
+        <input id="mdpConnexion" type="password"
+          placeholder="Ton mot de passe" required>
+        <button type="submit">Se connecter</button>
+      </form>
+      <button type="button" id="motDePasseOublie">Mot de passe oublié ?</button>
+    </div>
+
+    <p id="messageEtat" class="etat" role="status"></p>
+
+    <div id="chatZone" hidden>
+      <p>Connecté en tant que <strong id="nomConnecte"></strong></p>
+      <button id="deconnexionBtn" type="button">Se déconnecter</button>
+
+      <!-- RECHERCHE DES MEMBRES -->
+      <div class="recherche-membres">
+        <h3>🔎 Rechercher un membre</h3>
+        <div class="recherche-ligne">
+          <input id="rechercheMembres" type="search"
+            placeholder="Tape le pseudonyme d'un membre">
+          <button id="boutonRecherche" type="button">Rechercher</button>
+        </div>
+        <div id="resultatsMembres" aria-live="polite"></div>
+      </div>
+
+      <h3>💬 Messages de la communauté</h3>
+      <div id="listeMessages" class="lecon" aria-live="polite"></div>
+
+      <form id="messageForm">
+        <textarea id="texteMessage" placeholder="Écris ton message..."
+          maxlength="2000" rows="3" required></textarea>
+        <button type="submit">Envoyer le message</button>
+      </form>
+    </div>
+
+    <button class="retour" type="button" onclick="accueil()">← RETOUR À L'ACCUEIL</button>
+  </div>
+</section>
 
 <script>
 function masquerToutesLesPages() {
-       document.querySelectorAll(".page").forEach(function(page) {
-           page.style.display = "none";
-       });
+  document.querySelectorAll(".page").forEach(function(page) {
+    page.style.display = "none";
+  });
 }
 
 function afficherPage(id) {
-       masquerToutesLesPages();
+  masquerToutesLesPages();
+  const page = document.getElementById(id);
 
-       const page = document.getElementById(id);
-
-       if (page) {
-           page.style.display = "block";
-           window.scrollTo(0, 0);
-       }
+  if (page) {
+    page.style.display = id === "accueil" ? "flex" : "block";
+    window.scrollTo(0, 0);
+  }
 }
 
 function ouvrirNiveau(numero) {
-       afficherPage("niveau" + numero);
+  afficherPage("niveau" + numero);
 }
 
 function ouvrirCours(id) {
-       afficherPage(id);
+  afficherPage(id);
 }
 
 function retourNiveau(numero) {
-       afficherPage("niveau" + numero);
+  afficherPage("niveau" + numero);
 }
 
 function accueil() {
-       masquerToutesLesPages();
-
-       document.getElementById("accueil").style.display = "flex";
-
-       window.scrollTo(0, 0);
+  afficherPage("accueil");
 }
 
-/* OUVRIR ET FERMER LE MENU */
-
-function basculerMenu() {
-       const menu = document.getElementById("liensWhatsApp");
-       const bouton = document.getElementById("boutonMenu");
-
-       if (!menu || !bouton) return;
-
-       const ouvert = menu.classList.toggle("ouvert");
-       bouton.setAttribute("aria-expanded", String(ouvert));
+function ouvrirCommunaute() {
+  afficherPage("communaute");
+  actualiserComptePA();
 }
 
-/* RENDRE LE BOUTON TROIS POINTS CLIQUABLE */
-const boutonMenu = document.getElementById("boutonMenu");
-const liensWhatsApp = document.getElementById("liensWhatsApp");
-const conteneurMenu = document.querySelector(".menu-whatsapp");
+/* MENU */
+document.getElementById("boutonMenu").addEventListener("click", function() {
+  document.getElementById("liensWhatsApp").classList.toggle("ouvert");
+});
 
-if (boutonMenu && liensWhatsApp && conteneurMenu) {
-    boutonMenu.addEventListener("click", function(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        basculerMenu();
-    });
+document.addEventListener("click", function(event) {
+  const menu = document.querySelector(".menu-whatsapp");
+  if (!menu.contains(event.target)) {
+    document.getElementById("liensWhatsApp").classList.remove("ouvert");
+  }
+});
+</script>
 
-    /* Fermer le menu si l'on clique en dehors */
-    document.addEventListener("click", function(event) {
-        if (!conteneurMenu.contains(event.target)) {
-            liensWhatsApp.classList.remove("ouvert");
-            boutonMenu.setAttribute("aria-expanded", "false");
-        }
-    });
+<!-- SUPABASE : les comptes et messages nécessitent un projet configuré -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const PA_URL = "COLLE_ICI_URL_DU_PROJET";
+const PA_KEY = "COLLE_ICI_PUBLISHABLE_KEY";
 
-    /* Fermer le menu avec la touche Échap */
-    document.addEventListener("keydown", function(event) {
-        if (event.key === "Escape") {
-            liensWhatsApp.classList.remove("ouvert");
-            boutonMenu.setAttribute("aria-expanded", "false");
-        }
-    });
+let paClient = null;
+let paUser = null;
+let paChannel = null;
+
+function afficherEtatPA(texte) {
+  document.getElementById("messageEtat").textContent = texte;
 }
+
+function configurationPAValide() {
+  return PA_URL.startsWith("https://") &&
+         !PA_URL.includes("COLLE_ICI") &&
+         !PA_KEY.includes("COLLE_ICI");
+}
+
+async function actualiserComptePA() {
+  if (!configurationPAValide() || !paClient) {
+    afficherEtatPA("La communauté nécessite la configuration de Supabase.");
+    return;
+  }
+
+  const { data, error } = await paClient.auth.getSession();
+
+  if (error) {
+    afficherEtatPA("Impossible de vérifier la connexion.");
+    return;
+  }
+
+  paUser = data.session ? data.session.user : null;
+  document.getElementById("authZone").hidden = !!paUser;
+  document.getElementById("chatZone").hidden = !paUser;
+
+  if (!paUser) {
+    arreterEcoutePA();
+    return;
+  }
+
+  const { data: profil, error: profilErreur } = await paClient
+    .from("profiles")
+    .select("username")
+    .eq("id", paUser.id)
+    .maybeSingle();
+
+  if (profilErreur) {
+    afficherEtatPA("Vérifie la configuration de la table profiles dans Supabase.");
+    return;
+  }
+
+  document.getElementById("nomConnecte").textContent =
+    profil?.username || paUser.user_metadata?.username || "Membre";
+
+  await chargerMessagesPA();
+  ecouterMessagesPA();
+}
+
+document.getElementById("inscriptionForm").addEventListener("submit", async function(event) {
+  event.preventDefault();
+
+  if (!configurationPAValide()) {
+    afficherEtatPA("Ajoute l'URL et la clé Supabase dans le code.");
+    return;
+  }
+
+  const username = document.getElementById("nomInscription").value.trim();
+  const email = document.getElementById("emailInscription").value.trim();
+  const password = document.getElementById("mdpInscription").value;
+
+  if (!username || username.length > 40) {
+    afficherEtatPA("Choisis un pseudonyme de 1 à 40 caractères.");
+    return;
+  }
+
+  afficherEtatPA("Création du compte...");
+
+  const { data, error } = await paClient.auth.signUp({
+    email: email,
+    password: password,
+    options: { data: { username: username } }
+  });
+
+  if (error) {
+    afficherEtatPA("Inscription impossible : " + error.message);
+    return;
+  }
+
+  if (!data.session) {
+    afficherEtatPA("Compte créé. Vérifie tes e-mails pour confirmer ton adresse.");
+    return;
+  }
+
+  afficherEtatPA("Compte créé.");
+  await actualiserComptePA();
+});
+
+document.getElementById("connexionForm").addEventListener("submit", async function(event) {
+  event.preventDefault();
+
+  if (!configurationPAValide()) {
+    afficherEtatPA("Ajoute l'URL et la clé Supabase dans le code.");
+    return;
+  }
+
+  const email = document.getElementById("emailConnexion").value.trim();
+  const password = document.getElementById("mdpConnexion").value;
+
+  const { error } = await paClient.auth.signInWithPassword({
+    email: email,
+    password: password
+  });
+
+  if (error) {
+    afficherEtatPA("Connexion impossible. Vérifie ton e-mail et ton mot de passe.");
+    return;
+  }
+
+  afficherEtatPA("Connexion réussie !");
+  await actualiserComptePA();
+});
+
+document.getElementById("motDePasseOublie").addEventListener("click", async function() {
+  if (!configurationPAValide()) {
+    afficherEtatPA("Configure d'abord Supabase.");
+    return;
+  }
+
+  const email = document.getElementById("emailConnexion").value.trim();
+
+  if (!email) {
+    afficherEtatPA("Entre ton adresse e-mail dans le formulaire de connexion.");
+    return;
+  }
+
+  const { error } = await paClient.auth.resetPasswordForEmail(email);
+  afficherEtatPA(error ? "Envoi impossible. Réessaie." :
+    "Si le compte existe, un e-mail de réinitialisation sera envoyé.");
+});
+
+document.getElementById("deconnexionBtn").addEventListener("click", async function() {
+  arreterEcoutePA();
+  const { error } = await paClient.auth.signOut();
+
+  if (error) {
+    afficherEtatPA("Déconnexion impossible.");
+    return;
+  }
+
+  document.getElementById("listeMessages").replaceChildren();
+  afficherEtatPA("Tu es déconnecté.");
+  await actualiserComptePA();
+});
+
+async function chargerMessagesPA() {
+  const liste = document.getElementById("listeMessages");
+
+  const { data, error } = await paClient
+    .from("messages")
+    .select("id, body, user_id, created_at, profiles(username)")
+    .order("created_at", { ascending: true })
+    .limit(100);
+
+  if (error) {
+    afficherEtatPA("Impossible de charger les messages. Vérifie les tables et autorisations Supabase.");
+    console.error(error);
+    return;
+  }
+
+  liste.replaceChildren();
+  (data || []).forEach(afficherMessagePA);
+}
+
+function afficherMessagePA(message) {
+  const liste = document.getElementById("listeMessages");
+  const bloc = document.createElement("div");
+  bloc.className = "message-membre";
+
+  const auteur = document.createElement("strong");
+  auteur.textContent = message.profiles?.username || "Membre";
+
+  const contenu = document.createElement("p");
+  contenu.textContent = message.body;
+
+  const date = document.createElement("small");
+  date.textContent = new Date(message.created_at).toLocaleString("fr-FR");
+
+  bloc.append(auteur, contenu, date);
+  liste.appendChild(bloc);
+}
+
+document.getElementById("messageForm").addEventListener("submit", async function(event) {
+  event.preventDefault();
+
+  if (!paUser) {
+    afficherEtatPA("Connecte-toi pour envoyer un message.");
+    return;
+  }
+
+  const champ = document.getElementById("texteMessage");
+  const body = champ.value.trim();
+
+  if (!body) return;
+
+  const bouton = this.querySelector('button[type="submit"]');
+  bouton.disabled = true;
+
+  const { error } = await paClient.from("messages").insert({
+    user_id: paUser.id,
+    body: body
+  });
+
+  bouton.disabled = false;
+
+  if (error) {
+    afficherEtatPA("Message non envoyé. Vérifie les règles SQL.");
+    console.error(error);
+    return;
+  }
+
+  champ.value = "";
+  await chargerMessagesPA();
+  afficherEtatPA("");
+});
+
+function arreterEcoutePA() {
+  if (paChannel && paClient) {
+    paClient.removeChannel(paChannel);
+    paChannel = null;
+  }
+}
+
+function ecouterMessagesPA() {
+  arreterEcoutePA();
+
+  paChannel = paClient
+    .channel("purge-academy-messages")
+    .on("postgres_changes", {
+      event: "*",
+      schema: "public",
+      table: "messages"
+    }, chargerMessagesPA)
+    .subscribe();
+}
+
+/* RECHERCHE DES MEMBRES PAR PSEUDONYME */
+async function rechercherMembresPA() {
+  const champ = document.getElementById("rechercheMembres");
+  const resultats = document.getElementById("resultatsMembres");
+  const terme = champ.value.trim();
+
+  resultats.replaceChildren();
+
+  if (!paUser) {
+    resultats.textContent = "Connecte-toi pour rechercher des membres.";
+    return;
+  }
+
+  if (terme.length < 2) {
+    resultats.textContent = "Entre au moins 2 caractères.";
+    return;
+  }
+
+  resultats.textContent = "Recherche en cours...";
+
+  const { data, error } = await paClient
+    .from("profiles")
+    .select("id, username")
+    .ilike("username", "%" + terme.replace(/[%_]/g, "") + "%")
+    .neq("id", paUser.id)
+    .limit(20);
+
+  if (error) {
+    resultats.textContent = "Recherche impossible. Vérifie les autorisations de profiles.";
+    console.error(error);
+    return;
+  }
+
+  resultats.replaceChildren();
+
+  if (!data || data.length === 0) {
+    resultats.textContent = "Aucun membre trouvé.";
+    return;
+  }
+
+  data.forEach(function(membre) {
+    const resultat = document.createElement("div");
+    resultat.className = "resultat-membre";
+
+    const nom = document.createElement("strong");
+    nom.textContent = membre.username || "Membre";
+
+    resultat.appendChild(nom);
+    resultats.appendChild(resultat);
+  });
+}
+
+document.getElementById("boutonRecherche")
+  .addEventListener("click", rechercherMembresPA);
+
+document.getElementById("rechercheMembres")
+  .addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      rechercherMembresPA();
+    }
+  });
+
+if (configurationPAValide() && window.supabase) {
+  paClient = window.supabase.createClient(PA_URL, PA_KEY);
+
+  paClient.auth.onAuthStateChange(function() {
+    actualiserComptePA();
+  });
+}
+
+accueil();
 </script>
 
 </body>
